@@ -5,6 +5,7 @@
 
 .brand {
   font-family: "Days One", sans-serif;
+
 }
 
 * {
@@ -138,6 +139,7 @@ nav{
 
 #brand-heading {
   font-size: 100px;
+  
 }
 
 #aboutLogo {
@@ -151,6 +153,8 @@ p {
 @media all and (max-width: 576px) {
   #brand-heading {
     font-size: 55px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   #aboutLogo {
