@@ -1,0 +1,168 @@
+@import url("https://fonts.cdnfonts.com/css/days-one");
+@import url("https://fonts.cdnfonts.com/css/roboto");
+@import url("https://fonts.cdnfonts.com/css/ropa-sans-2");
+
+
+.brand {
+  font-family: "Days One", sans-serif;
+}
+
+* {
+  font-family: "Roboto Light", sans-serif;
+  color: #fff !important;
+}
+
+#subtitle {
+  font-family: "Ropa Sans", sans-serif;
+}
+
+.platform {
+  background-color: #030a34;
+}
+
+html,
+main,
+.container {
+  background-color: #8bdafc;
+}
+
+
+
+/* textarea.form-control {
+  background: #181516;
+  border-bottom: 2px solid #030a34;
+  border: 0;
+  border-bottom: 1px solid #26252E;
+  
+  
+}
+
+textarea.form-control:focus {
+  background: #181516;
+  border-bottom: 2px solid #030a34;
+  border: 0;
+  border-bottom: 1px solid #26252E;
+  color: #fff;
+  padding-bottom: 6px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #8bdafc,#5db6d9);
+  border-image-slice: 5;
+}
+ */
+
+ textarea.form-control {
+  border: 0 !important;
+  border-bottom: 4px solid transparent;
+  background-color: transparent;
+  transition: all 0.5s ease;
+  background-image: linear-gradient(to right, #0c22a6, #503b69);
+  background-size: 0% 10px;
+  background-position: 0px bottom;
+  background-repeat: no-repeat;
+  color:#d1d8dd;
+  background-color:  #181516 !important; /* add this line to set the background color */
+}
+
+textarea.form-control:focus {
+  border: 0 !important;
+  outline: none ;
+  border-bottom: 4px solid;
+  animation: draw 0.5s forwards;
+  box-shadow: none;
+  color:#d1d8dd;
+}
+
+@keyframes draw {
+  from {
+    background-size: 0% 4px;
+  }
+  to {
+    background-size: 100% 4px;
+  }
+}
+
+textarea::placeholder {
+  color: #181516;
+  opacity: 1; /* Set opacity to 1 for Firefox */
+}
+
+textarea:-ms-input-placeholder {
+  color: #181516;
+}
+
+textarea::-ms-input-placeholder {
+  color: #181516;
+}
+
+
+
+nav{
+  background-color: #030a34;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* HIDE RADIO */
+[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type="radio"]+img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type="radio"]:checked+img {
+  outline: 3px solid rgb(17, 0, 255);
+}
+
+#brand-heading {
+  font-size: 100px;
+}
+
+#aboutLogo {
+  width: 300px;
+}
+
+p {
+  font-size: 18px;
+}
+
+@media all and (max-width: 576px) {
+  #brand-heading {
+    font-size: 55px;
+  }
+
+  #aboutLogo {
+    width: 200px;
+  }
+}
+
+.igPost{
+  height: auto;
+  max-width: 100%;
+}
+
+
+
+

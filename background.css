@@ -1,0 +1,18 @@
+.background {
+ 
+    background-image: url('/img/mainbg2.jpg');
+    background-size: 400%;
+    animation: slide-background 180s linear infinite;
+   
+    
+  }
+  
+  
+  @keyframes slide-background {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
