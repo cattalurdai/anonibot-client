@@ -10,7 +10,7 @@
 
 * {
   font-family: "Roboto Light", sans-serif;
-  color: #fff !important;
+  color: #fff ;
 }
 
 #subtitle {
@@ -18,39 +18,37 @@
 }
 
 .platform {
-  background-color: #030a34;
+  background-color: #020312
+}
+nav{
+  background-color: #F8F9FA;
+
+  box-shadow: #f4f6ef;
+  font-weight: bolder;
+}
+
+.navbar-toggler[aria-expanded="true"]::before {
+background-color: #0c22a6;
 }
 
 html,
 main,
 .container {
-  background-color: #8bdafc;
+  background-color: #0A090C;
 }
 
 
-
-/* textarea.form-control {
-  background: #181516;
-  border-bottom: 2px solid #030a34;
-  border: 0;
-  border-bottom: 1px solid #26252E;
-  
-  
+.navbar-toggler{
+  border: none !important;
+}
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler:hover {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
-textarea.form-control:focus {
-  background: #181516;
-  border-bottom: 2px solid #030a34;
-  border: 0;
-  border-bottom: 1px solid #26252E;
-  color: #fff;
-  padding-bottom: 6px;  
-  font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right, #8bdafc,#5db6d9);
-  border-image-slice: 5;
-}
- */
+
 
  textarea.form-control {
   border: 0 !important;
@@ -91,22 +89,6 @@ textarea.form-control:focus {
 textarea.form-control:focus + label{
   color: #181516 !important;
 }
-
-
-
-
-
-nav{
-  background-color: #030a34;
-}
-
-
-
-
-
-
-
-
 
 
 

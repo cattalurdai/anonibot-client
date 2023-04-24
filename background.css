@@ -20,3 +20,10 @@
       background-position: 100% 0;
     }
   }
+
+
+  .background2{
+background-image: url("/img/mainbg5.png");
+background-size: cover;
+animation: slide-background 400s linear infinite;
+  }
