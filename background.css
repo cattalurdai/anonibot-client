@@ -1,13 +1,17 @@
 .background {
- 
-    background-image: url('/img/mainbg2.jpg');
-    background-size: 400%;
-    animation: slide-background 180s linear infinite;
-   
-    
+  background-image: url('/img/bigmainbg6.jpg');
+  background-size: cover;
+  animation: slide-background 100s linear infinite;
+}
+
+/* media query for small screens (up to 767px wide) */
+@media (max-width: 767px) {
+  .background {
+    background-size: 200%;
+    animation: slide-background 100s linear infinite;
+  background-image: url('/img/mainbg6.jpg');
   }
-  
-  
+}
   @keyframes slide-background {
     0% {
       background-position: 0 0;

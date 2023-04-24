@@ -61,8 +61,9 @@ textarea.form-control:focus {
   background-size: 0% 10px;
   background-position: 0px bottom;
   background-repeat: no-repeat;
-  color:#d1d8dd;
-  background-color:  #181516 !important; /* add this line to set the background color */
+  color:rgb(255, 255, 255) !important;
+  
+  background-color: #181516 !important; /* add this line to set the background color */
 }
 
 textarea.form-control:focus {
@@ -71,7 +72,8 @@ textarea.form-control:focus {
   border-bottom: 4px solid;
   animation: draw 0.5s forwards;
   box-shadow: none;
-  color:#d1d8dd;
+  color:black !important;
+  background-color: #f4f6ef !important
 }
 
 @keyframes draw {
@@ -83,18 +85,14 @@ textarea.form-control:focus {
   }
 }
 
-textarea::placeholder {
-  color: #181516;
-  opacity: 1; /* Set opacity to 1 for Firefox */
+.form-floating label {
+  color: rgb(255, 255, 255) !important;
+}
+textarea.form-control:focus + label{
+  color: #181516 !important;
 }
 
-textarea:-ms-input-placeholder {
-  color: #181516;
-}
 
-textarea::-ms-input-placeholder {
-  color: #181516;
-}
 
 
 
