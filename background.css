@@ -1,5 +1,5 @@
 .background {
-  background-image: url('/img/bigmainbg6.jpg');
+  background-image: url('/img/bg1_xl.jpg');
   background-size: cover;
   animation: slide-background 100s linear infinite;
 }
@@ -9,7 +9,7 @@
   .background {
     background-size: 200%;
     animation: slide-background 100s linear infinite;
-  background-image: url('/img/mainbg6.jpg');
+  background-image: url('/img/bg1_xl.jpg');
   }
 }
   @keyframes slide-background {
@@ -23,7 +23,7 @@
 
 
   .background2{
-background-image: url("/img/mainbg5.png");
+background-image: url("/img/bg2.jpg");
 background-size: cover;
 animation: slide-background 400s linear infinite;
   }
