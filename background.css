@@ -9,7 +9,7 @@
   .background {
     background-size: 200%;
     animation: slide-background 100s linear infinite;
-  background-image: url('/img/bg1_xl.jpg');
+  background-image: url('/img/bg1_sm.jpg');
   }
 }
   @keyframes slide-background {

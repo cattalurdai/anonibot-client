@@ -24,47 +24,65 @@
   });
 })();
 
-// DOTS ANIMATION
+// ANIMATION DOTS
 
 let dotsContainer = document.getElementById("dotsContainer");
 let textArea = document.getElementById("textArea");
 
-function animateDots() {
-  let count = 0;
-  const intervalId = setInterval(() => {
-    if (textArea.value) {
-      clearInterval(intervalId);
-      dotsContainer.textContent = "";
+// Animation scope
+(function () {
+  let isAnimating = false;
+
+  // Return if animation already running
+  function animateDots() {
+    if (isAnimating) {
       return;
     }
-    count = (count + 1) % 4;
-    dotsContainer.textContent = ".".repeat(count);
-  }, 800);
-}
 
-// Call animateDots() initially
-animateDots();
+    // Start animation
+    isAnimating = true;
 
-// Event listener for blur event on text area
-textArea.addEventListener("blur", () => {
-  // Restart the animation
+    let count = 0;
+    const intervalId = setInterval(() => {
+      if (textArea.value) {
+        // Break if input is detected
+        clearInterval(intervalId);
+        dotsContainer.textContent = "";
+        isAnimating = false;
+        return;
+      }
+      count = (count + 1) % 4;
+      dotsContainer.textContent = ".".repeat(count);
+    }, 800);
+  }
+
+  // Call animateDots() initially
   animateDots();
-});
 
+  // Event listener for blur event on text area
+  textArea.addEventListener("blur", () => {
+    // Restart the animation
+    animateDots();
+  });
+})();
 
-const section = document.getElementById('first');
+// ANIMATION SCROLL DIMMING
+
+// TODO: THIS NEEDS TO BE MADE DYNAMIC SO IT CAN BE USED ON ANY SECTION
+
+const section = document.getElementById("first");
 const sectionTop = section.offsetTop;
 const sectionHeight = section.offsetHeight;
 
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
   const currentScroll = window.scrollY;
 
   if (window.scrollY > 250) {
-    let totalPixels = sectionHeight - 350; 
+    let totalPixels = sectionHeight - 350;
     let leftPixels = sectionHeight - window.scrollY;
-    let percentage = (leftPixels / totalPixels) * 100
+    let percentage = (leftPixels / totalPixels) * 100;
 
-    console.log(percentage)
+    console.log(percentage);
 
     let opacity = percentage / 100;
     section.style.opacity = opacity;
@@ -72,6 +90,7 @@ window.addEventListener('scroll', () => {
     section.style.opacity = 1; // fully visible
   }
 });
+
 
 
 
