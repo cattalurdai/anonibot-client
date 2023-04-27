@@ -8,7 +8,7 @@
 @media (max-width: 767px) {
   .background {
     background-size: 200%;
-    animation: slide-background 100s linear infinite;
+    animation: slide-background 80s linear infinite;
     background-image: url("/img/bg1_sm.jpg");
   }
 }
@@ -24,7 +24,7 @@
 .background2 {
   background-image: url("/img/bg2.jpg");
   background-size: cover;
-  animation: slide-background 400s linear infinite;
+  animation: slide-background 150s linear infinite;
 }
 
 .background3 {
