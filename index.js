@@ -70,7 +70,7 @@ let textArea = document.getElementById("textArea");
 
 // TODO: THIS NEEDS TO BE MADE DYNAMIC SO IT CAN BE USED ON ANY SECTION
 
-const section = document.getElementById("first");
+/* const section = document.getElementById("first");
 const sectionTop = section.offsetTop;
 const sectionHeight = section.offsetHeight;
 
@@ -90,11 +90,92 @@ window.addEventListener("scroll", () => {
     section.style.opacity = 1; // fully visible
   }
 });
+ */
 
+/* 
+  function dimmingSrollAnimation(elem, startPercentage, endPercentage) {
+    const elemTop = elem.offsetTop;
+    const elemHeight = elem.offsetHeight;
+    const dimStart = elemTop + (elemHeight * startPercentage / 100);
+    const dimEnd = elemTop + (elemHeight * endPercentage / 100);
+    
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.scrollY;
 
+      if (currentScroll >= dimStart && currentScroll < dimEnd) {
+        const totalPixels = elemHeight * (endPercentage - startPercentage) / 100;
+        const leftPixels = (currentScroll - elemTop - (elemHeight * startPercentage / 100)) * (elemHeight / totalPixels);
+        const opacity = 1 - (leftPixels / elemHeight);
+        elem.style.opacity = opacity;
+      } else if (currentScroll >= dimEnd) {
+        elem.style.opacity = 0; // completely dark
+      } else {
+        elem.style.opacity = 1; // fully visible
+      }
+    });
+  }
+ */
 
+const section = document.getElementById("first"); /* 
+  dimmingSrollAnimation(section, 50, 85); // will start dimming 20% down from the top of the section */
 
+const section2 = document.getElementById("second"); /* 
+  dimmingSrollAnimation(section2, 50, 85); // will start dimming 20% down from the top of the section */
+  const section3 = document.getElementById("third"); 
 
+fadeOnScroll(section, 50, 85, 75, 85);
+fadeOnScroll(section2, 50, 85, 75, 85);
+fadeOnScroll(section3, 50, 85, 75, 85);
+
+function fadeOnScroll(elem, appearStartPct, appearEndPct, disappearStartPct, disappearEndPct, lockOpacityThreshold = 0.8) {
+  const elemTop = elem.offsetTop;
+  const elemHeight = elem.offsetHeight;
+  const appearStartPixels = (elemHeight * appearStartPct) / 100;
+  const appearEndPixels = (elemHeight * appearEndPct) / 100;
+  const disappearStartPixels = (elemHeight * disappearStartPct) / 100;
+  const disappearEndPixels = (elemHeight * disappearEndPct) / 100;
+
+  let appearing = false;
+  let disappearing = false;
+  let locked = true;
+
+  function updateOpacity() {
+    const currentScroll = window.scrollY;
+    const windowBottom = currentScroll + window.innerHeight;
+
+    const appearStartVisible = Math.max(elemTop + appearStartPixels, currentScroll);
+    const appearEndVisible = Math.min(elemTop + appearEndPixels, windowBottom);
+    const disappearStartVisible = Math.max(elemTop + disappearStartPixels, currentScroll);
+    const disappearEndVisible = Math.min(elemTop + disappearEndPixels, windowBottom);
+
+    let opacity;
+
+    if (!disappearing && appearStartVisible < appearEndVisible) {
+      appearing = true;
+      const visiblePixels = appearEndVisible - appearStartVisible;
+      opacity = visiblePixels / (appearEndPixels - appearStartPixels);
+    } else if (!appearing && disappearStartVisible < disappearEndVisible) {
+      disappearing = true;
+      const visiblePixels = disappearEndVisible - disappearStartVisible;
+      opacity = 1 - visiblePixels / (disappearEndPixels - disappearStartPixels);
+    } else {
+      appearing = false;
+      disappearing = false;
+      locked = true;
+      opacity = 0;
+    }
+
+    if (locked && opacity < lockOpacityThreshold) {
+      locked = false;
+    }
+
+    if (!locked) {
+      elem.style.opacity = opacity;
+    }
+  }
+
+  window.addEventListener("scroll", updateOpacity);
+}
 
 
 // GET IG LAST 5 POSTS

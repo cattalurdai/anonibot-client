@@ -1,5 +1,5 @@
 .background {
-  background-image: url('/img/bg1_xl.jpg');
+  background-image: url("/img/bg1_xl.jpg");
   background-size: cover;
   animation: slide-background 100s linear infinite;
 }
@@ -9,21 +9,26 @@
   .background {
     background-size: 200%;
     animation: slide-background 100s linear infinite;
-  background-image: url('/img/bg1_sm.jpg');
+    background-image: url("/img/bg1_sm.jpg");
   }
 }
-  @keyframes slide-background {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 100% 0;
-    }
+@keyframes slide-background {
+  0% {
+    background-position: 0 0;
   }
-
-
-  .background2{
-background-image: url("/img/bg2.jpg");
-background-size: cover;
-animation: slide-background 400s linear infinite;
+  100% {
+    background-position: 100% 0;
   }
+}
+
+.background2 {
+  background-image: url("/img/bg2.jpg");
+  background-size: cover;
+  animation: slide-background 400s linear infinite;
+}
+
+.background3 {
+  background-image: url("/img/test.jpg");
+  background-size: cover;
+  animation: slide-background 200s linear infinite;
+}
