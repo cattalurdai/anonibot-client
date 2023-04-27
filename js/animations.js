@@ -73,3 +73,5 @@ dimmingSrollAnimation(section, 50, 85);
 dimmingSrollAnimation(section2, 50, 85); 
 dimmingSrollAnimation(section3, 50, 85); 
 
+let eappsAdd = document.getElementsByClassName("eapps-link")[0]
+

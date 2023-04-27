@@ -48,6 +48,14 @@ nav {
   background-color: #050720;
 }
 
+section {
+  padding-bottom: 31%;
+}
+
+p{
+  font-size: 16px !important;
+}
+
 /* TEXT BOX */
 textarea.form-control {
   border: 0 !important;
@@ -72,14 +80,17 @@ textarea.form-control:focus {
   background-position: 0% bottom;
 }
 
-
-
-
 .form-floating label {
   color: rgb(255, 255, 255) !important;
 }
 textarea.form-control:focus + label {
   color: #181516 !important;
+}
+
+#embed{
+  background-color: #020312 !important;
+  border: #970dd6;
+  font-size: xx-large;
 }
 
 /* HIDE RADIO */

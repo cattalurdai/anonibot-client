@@ -28,7 +28,13 @@
 }
 
 .background3 {
-  background-image: url("/img/test.jpg");
+  background-image: url("/img/bg3.jpg");
+  background-size: cover;
+  animation: slide-background 200s linear infinite;
+}
+
+.background4 {
+  background-image: url("/img/bg4.jpg");
   background-size: cover;
   animation: slide-background 200s linear infinite;
 }
