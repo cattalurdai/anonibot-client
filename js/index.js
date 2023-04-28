@@ -3,10 +3,8 @@
 (function () {
   "use strict";
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
   var forms = document.querySelectorAll(".needs-validation");
 
-  // Loop over them and prevent submission
   Array.prototype.slice.call(forms).forEach(function (form) {
     form.addEventListener(
       "submit",
@@ -23,7 +21,6 @@
     );
   });
 })();
-
 
 // GET IG LAST 5 POSTS
 
@@ -57,9 +54,7 @@ function insertMedia(mediaArray) {
 
 getIgPosts();
 
-///////// INSTAGRAM POST REQUESTS ///////////
-
-// BUILD BODY SPECIFYING TEXT AND SELECTED BACKGROUND
+// BUILD REQUEST BODY
 
 async function buildBody() {
   const body = {
@@ -71,7 +66,7 @@ async function buildBody() {
   return JSON.stringify(body);
 }
 
-// REQUEST IMAGE PREVIEW
+// POST IMAGE PREVIEW
 
 const previewField = document.getElementById("imagePreview");
 
@@ -86,7 +81,7 @@ async function getPreview() {
       body: await buildBody(),
     });
 
-    // Check error
+    // Error handling
     if (!response.ok) {
       const errorMessage = await response.text();
       console.error(errorMessage);
@@ -94,14 +89,14 @@ async function getPreview() {
     }
     const base64String = await response.text();
 
-    // Set preview image as source
+    // Update preview
     previewField.src = `data:image/png;base64,${base64String}`;
   } catch (error) {
     console.error(error);
   }
 }
 
-// POST IMAGE ON IG
+// POST UPLOAD IMAGE
 
 async function createPost() {
   // Check last post time
@@ -119,7 +114,7 @@ async function createPost() {
       body: await buildBody(),
     }).then(() => setLastPostDate());
 
-    // Check error
+    // Error handling
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -128,9 +123,7 @@ async function createPost() {
   }
 }
 
-//////////// SPAM PREVENTION //////////////
-
-// SAVES DATETIME WHEN POST IS SUBMITTED
+// SPAM PREVENTION //
 
 function setLastPostDate() {
   let lastPostDate = new Date();
@@ -163,33 +156,20 @@ function spamAlert(remainingTime) {
   document.getElementById("reimainingTimeField").style.display = "block";
 }
 
-/////// UTILITIES & TWEAKS //////////////
-
-// CLOSE NAVBAR WHEN CLICK
-
-const navLinks = document.querySelectorAll(".nav-link");
-const menuToggle = document.getElementById("navbarMenu");
-const bsCollapse = new bootstrap.Collapse(menuToggle, { toggle: false });
-navLinks.forEach((l) => {
-  l.addEventListener("click", () => {
-    bsCollapse.toggle();
-  });
-});
-
-// MILISECONDS TO TIME
+// TIME CONVERSION
 
 function parseMillisecondsIntoTime(milliseconds) {
-  // Get hours from milliseconds
+  // Hours to milliseconds
   var hours = milliseconds / (1000 * 60 * 60);
   var absoluteHours = Math.floor(hours);
   var h = absoluteHours > 9 ? absoluteHours : "0" + absoluteHours;
 
-  // Get remainder from hours and convert to minutes
+  // Convert remainder to minutes
   var minutes = (hours - absoluteHours) * 60;
   var absoluteMinutes = Math.floor(minutes);
   var m = absoluteMinutes > 9 ? absoluteMinutes : "0" + absoluteMinutes;
 
-  // Get remainder from minutes and convert to seconds
+  // Convert remainder to seconds
   var seconds = (minutes - absoluteMinutes) * 60;
   var absoluteSeconds = Math.floor(seconds);
   var s = absoluteSeconds > 9 ? absoluteSeconds : "0" + absoluteSeconds;

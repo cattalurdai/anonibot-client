@@ -6,7 +6,7 @@ let textArea = document.getElementById("textArea");
 (function () {
   let isAnimating = false;
 
-  // Return if animation already running
+  // Return if animation running
   function animateDots() {
     if (isAnimating) {
       return;
@@ -18,7 +18,7 @@ let textArea = document.getElementById("textArea");
     let count = 0;
     const intervalId = setInterval(() => {
       if (textArea.value) {
-        // Break if input is detected
+        // Break if input detected
         clearInterval(intervalId);
         dotsContainer.textContent = "";
         isAnimating = false;
@@ -29,12 +29,11 @@ let textArea = document.getElementById("textArea");
     }, 800);
   }
 
-  // Call animateDots() initially
+  // Initiate animation
   animateDots();
 
-  // Event listener for blur event on text area
-  textArea.addEventListener("blur", () => {
-    // Restart the animation
+  // Restart animation on blur event
+  textArea.addEventListener("blur", () => { 
     animateDots();
   });
 })();
@@ -59,9 +58,9 @@ function dimmingSrollAnimation(elem, startPercentage, endPercentage) {
       const opacity = 1 - leftPixels / elemHeight;
       elem.style.opacity = opacity;
     } else if (currentScroll >= dimEnd) {
-      elem.style.opacity = 0; // completely dark
+      elem.style.opacity = 0; 
     } else {
-      elem.style.opacity = 1; // fully visible
+      elem.style.opacity = 1; 
     }
   });
 }
@@ -73,5 +72,13 @@ dimmingSrollAnimation(section, 50, 85);
 dimmingSrollAnimation(section2, 50, 85); 
 dimmingSrollAnimation(section3, 50, 85); 
 
-let eappsAdd = document.getElementsByClassName("eapps-link")[0]
+// CLOSE NAVBAR WHEN CLICK
 
+const navLinks = document.querySelectorAll(".nav-link");
+const menuToggle = document.getElementById("navbarMenu");
+const bsCollapse = new bootstrap.Collapse(menuToggle, { toggle: false });
+navLinks.forEach((l) => {
+  l.addEventListener("click", () => {
+    bsCollapse.toggle();
+  });
+});
