@@ -85,11 +85,14 @@ async function getPreview() {
 
 // POST UPLOAD IMAGE
 
+const submitCreatePost = document.getElementById("submitCreatePost")
+submitCreatePost.addEventListener("click", () => {
+  createPost()
+})
+
 async function createPost() {
   // Check last post time
-  if (!spamValidation()) {
-    return;
-  }
+ 
 
   // Send request
   try {
@@ -136,12 +139,12 @@ function spamValidation() {
 
 // SHOW ALERT WITH REMAINING TIME
 
-function spamAlert(remainingTime) {
+ function spamAlert(remainingTime) {
   document.getElementById("reimainingTimeField").innerText =
     "Podrás hacer otra publicación en " +
     parseMillisecondsIntoTime(remainingTime);
   document.getElementById("reimainingTimeField").style.display = "block";
-}
+} 
 
 // TIME CONVERSION
 

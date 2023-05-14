@@ -169,6 +169,7 @@
                   </div>
                   <div class="row mt-2">
                     <div class="col-12 mt-lg-5 text-center mx-auto">
+                      <span id="reimainingTimeField"></span>
                       <div class="btn-group mt-2">
                         <button
                           type="submit"
@@ -213,13 +214,13 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-12 p-2">
-                  <img id="imagePreview" class="img-fluid" src="" alt="" />
+                  <img data-bs-dismiss="modal" id="imagePreview" class="img-fluid" src="" alt="" />
                 </div>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-lg btn-success d-block">
-                Enviar
+              <button data-bs-dismiss="modal" type="submit" id="submitCreatePost" class="btn btn-lg btn-success d-block">
+                Confirmar
               </button>
               <button
                 type="button"
