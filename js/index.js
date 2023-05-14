@@ -11,7 +11,7 @@
         event.stopPropagation();
         const clickedButton = event.submitter;
         if (form.checkValidity()) {
-          clickedButton.id === "postSubmit" ? createPost() : getPreview();
+          getPreview();
         }
         form.classList.add("was-validated");
       },
@@ -20,39 +20,22 @@
   });
 })();
 
-// GET IG LAST 5 POSTS
 
-let igImageFields = document.getElementsByClassName("igPost");
+const API = "https://anonibot-api.onrender.com"
+const spinner = document.getElementById("spinner")
+const spinnerContainer = document.getElementById("spinner-container")
 
-async function getIgPosts() {
-  try {
-    const response = await fetch("http://localhost:4555/getIgPosts", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((res) =>
-      res.json().then((data) => {
-        console.log(data);
-        insertMedia(data);
-      })
-    );
-  } catch (error) {
-    console.error(error);
-  }
+function showSpinner() {
+  spinner.style.display = "block";
+
+  spinnerContainer.style.display = "flex";
+  console.log("spinner on")
 }
 
-function insertMedia(mediaArray) {
-  let i = 0;
-  for (const field of igImageFields) {
-    field.src = mediaArray[i].media_url;
-    i += 1;
-  }
+function hideSpinner() {
+  spinner.style.display = "none";
+  spinnerContainer.style.display = "none";
 }
-
-getIgPosts();
-
-// BUILD REQUEST BODY
 
 async function buildBody() {
   const body = {
@@ -65,13 +48,15 @@ async function buildBody() {
 }
 
 // POST IMAGE PREVIEW
-
+const submitModal = new bootstrap.Modal(document.getElementById("submitModal"));
 const previewField = document.getElementById("imagePreview");
 
 async function getPreview() {
+  showSpinner();
+
   // Send request
   try {
-    const response = await fetch("http://localhost:4555/getPreview", {
+    const response = await fetch(API + "/getPreview", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,6 +74,10 @@ async function getPreview() {
 
     // Update preview
     previewField.src = `data:image/png;base64,${base64String}`;
+
+    // Open modal
+    hideSpinner();
+    submitModal.show();
   } catch (error) {
     console.error(error);
   }
@@ -104,7 +93,7 @@ async function createPost() {
 
   // Send request
   try {
-    const response = await fetch("http://localhost:4555/createPost", {
+    const response = await fetch( API + "/createPost", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

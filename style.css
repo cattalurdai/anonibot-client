@@ -41,7 +41,6 @@ nav {
   box-shadow: none !important;
 }
 
-
 /* MAIN CONTENT PLATFORM */
 
 .platform {
@@ -52,7 +51,7 @@ section {
   padding-bottom: 31%;
 }
 
-p{
+p {
   font-size: 16px !important;
 }
 
@@ -87,7 +86,7 @@ textarea.form-control:focus + label {
   color: #181516 !important;
 }
 
-#embed{
+#embed {
   background-color: #020312 !important;
   border: #970dd6;
   font-size: xx-large;
@@ -136,4 +135,25 @@ p {
 .igPost {
   height: auto;
   max-width: 100%;
+}
+
+
+#spinner-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+#spinner {
+  display: none;
+  width: 100px;
+  height: 100px;
 }
