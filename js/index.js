@@ -9,27 +9,38 @@
       function (event) {
         event.preventDefault();
         event.stopPropagation();
-        const clickedButton = event.submitter;
+
         if (form.checkValidity()) {
           getPreview();
+        } else {
+          addTextAreaInvalidStyle();
         }
-        form.classList.add("was-validated");
       },
       false
     );
   });
 })();
 
-
-const API = "https://anonibot-api.onrender.com"
-const spinner = document.getElementById("spinner")
-const spinnerContainer = document.getElementById("spinner-container")
+/* const API = "https://anonibot-api.onrender.com"  */
+const API = "http://localhost:9999";
+const spinner = document.getElementById("spinner");
+const spinnerContainer = document.getElementById("spinner-container");
 
 function showSpinner() {
   spinner.style.display = "block";
 
   spinnerContainer.style.display = "flex";
-  console.log("spinner on")
+  console.log("spinner on");
+}
+
+function addTextAreaInvalidStyle() {
+  const textArea = document.getElementById("textArea");
+
+  textArea.classList.add("invalid");
+
+  textArea.addEventListener("input", () => {
+    textArea.classList.remove("invalid");
+  });
 }
 
 function hideSpinner() {
@@ -85,18 +96,17 @@ async function getPreview() {
 
 // POST UPLOAD IMAGE
 
-const submitCreatePost = document.getElementById("submitCreatePost")
+const submitCreatePost = document.getElementById("submitCreatePost");
 submitCreatePost.addEventListener("click", () => {
-  createPost()
-})
+  createPost();
+});
 
 async function createPost() {
   // Check last post time
- 
 
   // Send request
   try {
-    const response = await fetch( API + "/createPost", {
+    const response = await fetch(API + "/createPost", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -139,12 +149,12 @@ function spamValidation() {
 
 // SHOW ALERT WITH REMAINING TIME
 
- function spamAlert(remainingTime) {
+function spamAlert(remainingTime) {
   document.getElementById("reimainingTimeField").innerText =
     "Podrás hacer otra publicación en " +
     parseMillisecondsIntoTime(remainingTime);
   document.getElementById("reimainingTimeField").style.display = "block";
-} 
+}
 
 // TIME CONVERSION
 
