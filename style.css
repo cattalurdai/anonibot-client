@@ -31,6 +31,10 @@ nav {
   color: #f4f6ef;
 }
 
+.nav-link{
+  color: #fff !important;
+}
+
 /* Disable toggler border */
 
 .navbar-toggler,
@@ -48,15 +52,26 @@ nav {
 }
 
 section {
-  padding-bottom: 31%;
+  height: 100vh;
 }
 
-p {
-  font-size: 16px !important;
+p, li {
+  font-size: 17px !important;
+}
+
+button.submit{
+  background-color: #3935ff;
+  color: #fff;
+}
+
+button.submit:hover{
+  background-color: #3935ff;
+  color: #fff;
 }
 
 /* TEXT BOX */
 textarea.form-control {
+  height: 90px !important;
   border: 0 !important;
   border-bottom: 4px solid transparent;
   transition: all 0.5s ease;
@@ -68,6 +83,7 @@ textarea.form-control {
 }
 
 textarea.form-control:focus {
+  height: 140px !important;
   border: 0 !important;
   outline: none;
   border-bottom: 4px solid;
@@ -78,6 +94,14 @@ textarea.form-control:focus {
   background-image: none;
   background-position: 0% bottom;
 }
+
+textarea.form-control.invalid {
+  border: 0.5px solid red !important; 
+  background-color: #ffdddd !important; 
+}
+
+
+
 
 .form-floating label {
   color: rgb(255, 255, 255) !important;
@@ -136,7 +160,6 @@ p {
   height: auto;
   max-width: 100%;
 }
-
 
 #spinner-container {
   display: none;
