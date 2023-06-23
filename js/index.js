@@ -27,8 +27,8 @@ const spinner = document.getElementById("spinner");
 const spinnerContainer = document.getElementById("spinner-container");
 
 function showSpinner() {
+  document.body.classList.add('loading');
   spinner.style.display = "block";
-
   spinnerContainer.style.display = "flex";
   console.log("spinner on");
 }
@@ -46,6 +46,8 @@ function addTextAreaInvalidStyle() {
 function hideSpinner() {
   spinner.style.display = "none";
   spinnerContainer.style.display = "none";
+  document.body.classList.remove('loading');
+  console.log("spinner off");
 }
 
 async function buildBody() {

@@ -31,7 +31,7 @@ nav {
   color: #f4f6ef;
 }
 
-.nav-link{
+.nav-link {
   color: #fff !important;
 }
 
@@ -55,16 +55,55 @@ section {
   height: 100vh;
 }
 
-p, li {
+p,
+li {
   font-size: 17px !important;
 }
 
-button.submit{
+@media (max-width: 991.98px) {
+  /* Styles for small screens */
+  h1.title {
+    font-size: 3rem !important;
+
+  font-family: "Ropa Sans", sans-serif;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Styles for lg screens */
+  h1.title {
+    font-size: 6rem !important;
+    
+  font-family: "Ropa Sans", sans-serif;
+  }
+}
+
+
+/* MODALS */
+
+
+.modal-content .modal-header ,
+  .modal-content .modal-body ,
+  .modal-content .modal-footer  {
+    border: 0;
+  }
+
+
+  .modal.fade.show{
+    background-color: rgba(0, 0, 0, 0.7)
+  }
+
+/* BUTTONS */
+
+button{
+  font-family: "Montserrat" , sans-serif !important}
+
+button.submit {
   background-color: #3935ff;
   color: #fff;
 }
 
-button.submit:hover{
+button.submit:hover {
   background-color: #3935ff;
   color: #fff;
 }
@@ -96,12 +135,9 @@ textarea.form-control:focus {
 }
 
 textarea.form-control.invalid {
-  border: 0.5px solid red !important; 
-  background-color: #ffdddd !important; 
+  border: 0.5px solid red !important;
+  background-color: #ffdddd !important;
 }
-
-
-
 
 .form-floating label {
   color: rgb(255, 255, 255) !important;
@@ -138,7 +174,7 @@ textarea.form-control:focus + label {
   font-size: 100px;
 }
 
-#aboutLogo {
+.logoImg {
   width: 300px;
 }
 
@@ -161,6 +197,8 @@ p {
   max-width: 100%;
 }
 
+/* LOADING SPINNERS */
+
 #spinner-container {
   display: none;
   justify-content: center;
@@ -172,11 +210,15 @@ p {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 9999;
-  pointer-events: none;
+  overflow: hidden;
 }
 
 #spinner {
   display: none;
   width: 100px;
   height: 100px;
+}
+
+body.loading {
+  overflow: hidden; /* Prevent scrolling when the overlay is active */
 }

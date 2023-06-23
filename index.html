@@ -18,14 +18,13 @@
   </head>
 
   <body>
-    </div>
     <main>
       <div id="spinner-container">
         <img id="spinner" src="img/spinner.svg" />
       </div>
       <div class="container-fluid px-0 px-md-3 px-lg-5">
         <nav
-          class="navbar navbar-expand-lg mx-lg-5 fixed-top py-lg-3 h5 navbar-dark shadow-lg"
+          class="navbar navbar-expand-lg fixed-top py-lg-3 h5 navbar-dark shadow-lg"
           role="navigation"
         >
           <div class="container-fluid">
@@ -66,7 +65,7 @@
 
         <div class="row">
           <form
-            class="col-11 col-lg-10 mx-auto needs-validation mt-1 py-3 px-3 mb-lg-5 py-md-5 p-md-5 rounded-2 platform text-light shadow-lg"
+            class="col-11 col-lg-8 mx-auto needs-validation mt-1 py-3 px-3 mb-lg-5 py-md-5 p-md-5 rounded-2 platform text-light shadow-lg"
             action="#"
             novalidate
           >
@@ -198,14 +197,14 @@
         aria-hidden="true"
       >
         <div class="modal-dialog modal-dialog-centered p-2">
-          <div class="modal-content">
+          <div class="modal-content bg-dark text-light pt-2">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
+              <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">
                 Vista previa
               </h1>
               <button
                 type="button"
-                class="btn-close"
+                class="btn-close btn-close-white"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
@@ -213,20 +212,33 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-12 p-2">
-                  <img data-bs-dismiss="modal" id="imagePreview" class="img-fluid" src="" alt="" />
+                  <img
+                    data-bs-dismiss="modal"
+                    id="imagePreview"
+                    class="img-fluid"
+                    src=""
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
             <div class="modal-footer">
-              <button data-bs-dismiss="modal" type="submit" id="submitCreatePost" class="btn btn-lg btn-success d-block">
-                Confirmar
+              <button
+                data-bs-dismiss="modal"
+                type="submit"
+                id="submitCreatePost"
+                style="background-color: #6eec56"
+                class="btn btn-lg d-block"
+              >
+                Enviar
+                <i class="fa fa-paper-plane text-dark" aria-hidden="true"></i>
               </button>
               <button
                 type="button"
-                class="btn btn-lg btn-primary"
+                class="btn btn-lg btn-outline-light"
                 data-bs-dismiss="modal"
               >
-                Cerrar
+                Cancelar
               </button>
             </div>
           </div>
@@ -235,16 +247,18 @@
 
       <section id="second" class="container-fluid background2">
         <div class="row text-center pt-5 mb-4">
-          <h1 style="font-size: 3rem">¿Qué soy?</h1>
+          <h1 class="title">¿Qué soy?</h1>
         </div>
-        <div class="row pb-5">
-          <div class="col-11 mx-auto platform text-light rounded-2 px-2 pb-3">
+        <div class="row pb-5 pt-lg-5">
+          <div
+            class="col-11 col-lg-8 mx-auto platform py-lg-5 mt-lg-5 text-light rounded-2 px-2 pb-3"
+          >
             <div class="row mt-3 mb-2">
               <h1 class="brand text-center">ANONIBOT</h1>
             </div>
             <div class="row text-center">
-              <div class="col-12 col-md-6 col-lg-4 col-xl-3 ms-lg-auto mb-2">
-                <img id="aboutLogo" src="/img/logo.png" alt="" />
+              <div class="col-12 col-md-6 col-lg-4 ms-lg-auto mb-2">
+                <img class="logoImg" src="/img/logo.png" alt="" />
               </div>
               <div
                 class="col-10 col-md-6 col-lg-4 col-xl-3 align-middle mx-auto mx-lg-0 my-lg-auto me-lg-auto"
@@ -254,9 +268,8 @@
                   software uruguayo. Soy un robot que recibe mensajes anónimos y
                   los publica de forma automatizada en Instagram.
                 </p>
-
                 <p>
-                  No recolecto <b>ningún tipo de datos personales</b> , la
+                  No recolecto <b>ningún tipo de datos personales</b>, la
                   conexión es segura y cada usuario/mensaje es totalmente
                   anónimo.
                 </p>
@@ -268,17 +281,18 @@
 
       <section id="third" class="background3 container-fluid">
         <div class="row text-center pt-5 mb-4">
-          <h1 class="text-dark" style="font-size: 3rem">Reglas</h1>
+          <h1 class="text-dark title">Reglas</h1>
         </div>
-        <div class="row pb-5 text-center">
-          <div class="col-11 mx-auto platform text-light px-2 pt-3 pb-5">
+        <div class="row pb-5 text-center pt-lg-5">
+          <div
+            class="col-11 col-lg-8 mx-auto platform text-light px-2 pt-3 pb-5 mt-lg-5"
+          >
             <div class="row my-3">
               <h1 class="brand text-center">ANONIBOT</h1>
             </div>
             <div class="row">
               <div class="col-11 text-md-center ms-md-5">
                 <ul style="list-style-type: none">
-                  <p>
                   <li>No se permite el <b>acoso o la intimidación</b></li>
                   <br />
                   <li>
@@ -288,13 +302,12 @@
                   <br />
                   <li>
                     Anonibot se compromete a mantener la
-                    <b>privacidad de sus usuarios. </b>
+                    <b>privacidad de sus usuarios.</b>
                   </li>
                   <br />
                   <li>No se permite el <b>SPAM</b>.</li>
                   <br /><br />
                   <li>La <u>libertad de expresión</u> es nuestro lema.</li>
-                </p>
                 </ul>
               </div>
             </div>
@@ -306,12 +319,30 @@
 
       <section id="fourth" class="container-fluid background4 py-5">
         <div class="row text-center pt-5 mb-4">
-          <h1 style="font-size: 3rem">Lee los secretos</h1>
+          <h1 class="title">Lee los secretos</h1>
         </div>
         <div class="row">
-          <div class="col-11 mx-auto platform text-light rounded-2 p-lg-5">
+          <div
+            class="col-11 col-md-8 mx-auto platform text-light text-center rounded-2 px-4 p-lg-5"
+          >
             <div class="row my-3">
-              <h1 class="brand text-center">ANONIBOT</h1>
+              <h1 class="brand">ANONIBOT</h1>
+              <p>
+                El servicio está actualmente dirigido a la comunidad de
+                <u>San Carlos</u>. <br />
+                Puedes leer los secretos en Instagram haciendo click en este
+                link:
+              </p>
+              <a
+                href="https://www.instagram.com/anonibot_sancarlos/"
+                target="_blank"
+                >Anonibot San Carlos
+                <i class="fa fa-picture-o" aria-hidden="true"></i>
+              </a>
+              <div>
+                <img class="logoImg" src="img/logo2.png" />
+              </div>
+              <p class="text-muted">Anonibot BETA V1.0</p>
             </div>
           </div>
         </div>
@@ -327,7 +358,10 @@
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"
   ></script>
-  <script src="https://kit.fontawesome.com/2dcde58e81.js" crossorigin="anonymous"></script>
+  <script
+    src="https://kit.fontawesome.com/2dcde58e81.js"
+    crossorigin="anonymous"
+  ></script>
   <script src="/js/index.js"></script>
   <script src="/js/animations.js"></script>
 </html>
