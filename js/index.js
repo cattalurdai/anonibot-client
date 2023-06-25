@@ -21,8 +21,8 @@
   });
 })();
 
-/* const API = "https://anonibot-api.onrender.com"  */
-const API = "http://localhost:9999";
+const API = "https://anonibot-api.onrender.com"  
+/* const API = "http://localhost:9999";*/
 const spinner = document.getElementById("spinner");
 const spinnerContainer = document.getElementById("spinner-container");
 
