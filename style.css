@@ -52,7 +52,7 @@ nav {
 }
 
 section {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 p,
@@ -190,6 +190,23 @@ p {
   #aboutLogo {
     width: 200px;
   }
+
+  @media (min-height: 750px) and (max-width: 1000px) {
+    /* Your CSS rules for screens with height larger than 750px and width less than 1000px */
+    /* Add your styles here */
+    #brand-heading {
+      margin-top: 10%;
+    }
+  
+    #subtitle {
+      margin-bottom: 5%;
+    }
+  }
+  
+  
+.logoImg {
+  width: 220px;
+}
 }
 
 .igPost {
