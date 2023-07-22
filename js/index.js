@@ -1,5 +1,4 @@
 // BOOTSTRAP FORM VALIDATIONS
-
 (function () {
   var forms = document.querySelectorAll(".needs-validation");
 
@@ -24,32 +23,6 @@
 const API = "https://anonibot-api.onrender.com";
 
 /* const API = "http://localhost:9999"; */
-const spinner = document.getElementById("spinner");
-const spinnerContainer = document.getElementById("spinner-container");
-
-function showSpinner() {
-  document.body.classList.add("loading");
-  spinner.style.display = "block";
-  spinnerContainer.style.display = "flex";
-  console.log("spinner on");
-}
-
-function addTextAreaInvalidStyle() {
-  const textArea = document.getElementById("textArea");
-
-  textArea.classList.add("invalid");
-
-  textArea.addEventListener("input", () => {
-    textArea.classList.remove("invalid");
-  });
-}
-
-function hideSpinner() {
-  spinner.style.display = "none";
-  spinnerContainer.style.display = "none";
-  document.body.classList.remove("loading");
-  console.log("spinner off");
-}
 
 async function buildBody() {
   const body = {
@@ -66,8 +39,15 @@ const submitModal = new bootstrap.Modal(document.getElementById("submitModal"));
 const previewField = document.getElementById("imagePreview");
 
 async function getPreview() {
+  if(!textValidation(document.getElementById("textArea").value)){
+    console.log("Input text did not meet criteria");
+    return 
+  } else {
+    console.log("Input text met criteria")
+  }
+  
   showSpinner();
-
+  
   // Send request
   try {
     const response = await fetch(API + "/getPreview", {
@@ -97,7 +77,7 @@ async function getPreview() {
   }
 }
 
-// POST UPLOAD IMAGE
+// POST IMAGE UPLOAD 
 
 const submitCreatePost = document.getElementById("submitCreatePost");
 submitCreatePost.addEventListener("click", () => {
@@ -124,6 +104,90 @@ async function createPost() {
   } catch (error) {
     console.error("Error:", error);
   }
+}
+
+// LOADING SPINNER
+
+const spinner = document.getElementById("spinner");
+const spinnerContainer = document.getElementById("spinner-container");
+
+function showSpinner() {
+  document.body.classList.add("loading");
+  spinner.style.display = "block";
+  spinnerContainer.style.display = "flex";
+  console.log("spinner on");
+}
+
+function hideSpinner() {
+  spinner.style.display = "none";
+  spinnerContainer.style.display = "none";
+  document.body.classList.remove("loading");
+  console.log("spinner off");
+}
+
+// INPUT TEXT VALIDATION
+
+const adjacentCharThreshold = 3; 
+
+function repeatedCharsValidation(input) {
+  const cleanedInput = input.toLowerCase();
+  let consecutiveCount = 1;
+
+  for (let i = 1; i < cleanedInput.length; i++) {
+    if (cleanedInput[i] === cleanedInput[i - 1]) {
+      consecutiveCount++;
+
+      if (consecutiveCount > adjacentCharThreshold) {
+        // Exceeded the maximum allowed adjacent repeated characters
+        console.log(`Adjacent repeated characters detected: ${cleanedInput[i]}, count: ${consecutiveCount}`);
+        return false;
+      }
+    } else {
+      consecutiveCount = 1;
+    }
+  }
+
+  // No adjacent repeated characters detected
+  return true;
+}
+
+function lengthValidation(input) {
+  // Trim the input to remove leading and trailing whitespaces
+  const trimmedInput = input.trim();
+
+  // Split the input by whitespace to get individual words
+  const words = trimmedInput.split(/\s+/);
+
+  // Check if the number of words is at least 2
+  if (words.length < 2) {
+    console.log("Input should contain at least two words.");
+    return false;
+  }
+
+  // Check if the length of the input is at least 8 characters
+  if (trimmedInput.length < 8) {
+    console.log("Input should be at least 8 characters long.");
+    return false;
+  }
+
+  // Both conditions are met, input is valid
+  console.log("Input is valid.");
+  return true;
+}
+
+
+function textValidation(input) {
+  return (repeatedCharsValidation(input) || lengthValidation(input));
+}
+
+function addTextAreaInvalidStyle() {
+  const textArea = document.getElementById("textArea");
+
+  textArea.classList.add("invalid");
+
+  textArea.addEventListener("input", () => {
+    textArea.classList.remove("invalid");
+  });
 }
 
 // SPAM PREVENTION //
