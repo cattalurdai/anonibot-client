@@ -21,13 +21,14 @@
   });
 })();
 
-const API = "https://anonibot-api.onrender.com"  
-/* const API = "http://localhost:9999";*/
+const API = "https://anonibot-api.onrender.com";
+
+/* const API = "http://localhost:9999"; */
 const spinner = document.getElementById("spinner");
 const spinnerContainer = document.getElementById("spinner-container");
 
 function showSpinner() {
-  document.body.classList.add('loading');
+  document.body.classList.add("loading");
   spinner.style.display = "block";
   spinnerContainer.style.display = "flex";
   console.log("spinner on");
@@ -46,7 +47,7 @@ function addTextAreaInvalidStyle() {
 function hideSpinner() {
   spinner.style.display = "none";
   spinnerContainer.style.display = "none";
-  document.body.classList.remove('loading');
+  document.body.classList.remove("loading");
   console.log("spinner off");
 }
 
@@ -54,7 +55,7 @@ async function buildBody() {
   const body = {
     text: await document.getElementById("textArea").value,
     background: await document.querySelector(
-      'input[name="backgroundSelection"]:checked'
+      'input[name="themeSelection"]:checked'
     ).value,
   };
   return JSON.stringify(body);
