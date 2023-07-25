@@ -20,9 +20,9 @@
   });
 })();
 
-// const API = "https://anonibot-api.onrender.com";
+const API = "https://anonibot-api.onrender.com";
 
-const API = "http://localhost:9999";
+// const API = "http://localhost:9999";
 
 async function buildBody() {
   const body = {
