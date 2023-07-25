@@ -20,9 +20,9 @@
   });
 })();
 
-const API = "https://anonibot-api.onrender.com";
+// const API = "https://anonibot-api.onrender.com";
 
-/* const API = "http://localhost:9999"; */
+const API = "http://localhost:9999";
 
 async function buildBody() {
   const body = {
@@ -39,15 +39,12 @@ const submitModal = new bootstrap.Modal(document.getElementById("submitModal"));
 const previewField = document.getElementById("imagePreview");
 
 async function getPreview() {
-  if(!textValidation(document.getElementById("textArea").value)){
-    console.log("Input text did not meet criteria");
-    return 
-  } else {
-    console.log("Input text met criteria")
-  }
-  
+  if (!textValidation(document.getElementById("textArea").value)) {
+    return;
+  } 
+
   showSpinner();
-  
+
   // Send request
   try {
     const response = await fetch(API + "/getPreview", {
@@ -77,7 +74,7 @@ async function getPreview() {
   }
 }
 
-// POST IMAGE UPLOAD 
+// POST IMAGE UPLOAD
 
 const submitCreatePost = document.getElementById("submitCreatePost");
 submitCreatePost.addEventListener("click", () => {
@@ -95,14 +92,16 @@ async function createPost() {
         "Content-Type": "application/json",
       },
       body: await buildBody(),
-    }).then(() => setLastPostDate());
+    });
 
     // Error handling
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`Request failed with status: ${response.status}`);
     }
+
+    setLastPostDate();
   } catch (error) {
-    console.error("Error:", error);
+    console.error(error);
   }
 }
 
@@ -127,7 +126,7 @@ function hideSpinner() {
 
 // INPUT TEXT VALIDATION
 
-const adjacentCharThreshold = 3; 
+const adjacentCharThreshold = 3;
 
 function repeatedCharsValidation(input) {
   const cleanedInput = input.toLowerCase();
@@ -139,7 +138,9 @@ function repeatedCharsValidation(input) {
 
       if (consecutiveCount > adjacentCharThreshold) {
         // Exceeded the maximum allowed adjacent repeated characters
-        console.log(`Adjacent repeated characters detected: ${cleanedInput[i]}, count: ${consecutiveCount}`);
+        console.log(
+          `Adjacent repeated characters detected: ${cleanedInput[i]}, count: ${consecutiveCount}`
+        );
         return false;
       }
     } else {
@@ -160,13 +161,13 @@ function lengthValidation(input) {
 
   // Check if the number of words is at least 2
   if (words.length < 2) {
-    console.log("Input should contain at least two words.");
+    console.warn("Input should contain at least two words.");
     return false;
   }
 
   // Check if the length of the input is at least 8 characters
   if (trimmedInput.length < 8) {
-    console.log("Input should be at least 8 characters long.");
+    console.warn("Input should be at least 8 characters long.");
     return false;
   }
 
@@ -175,9 +176,8 @@ function lengthValidation(input) {
   return true;
 }
 
-
 function textValidation(input) {
-  return (repeatedCharsValidation(input) || lengthValidation(input));
+  return repeatedCharsValidation(input) && lengthValidation(input);
 }
 
 function addTextAreaInvalidStyle() {
@@ -196,6 +196,7 @@ function setLastPostDate() {
   let lastPostDate = new Date();
   let lastPostDateString = lastPostDate.toISOString();
   localStorage.setItem("lastPostDate", lastPostDateString);
+  console.log("Last post time resetted");
 }
 
 // VALIDATES IF LAST POST WAS MORE THAN 8 HOURS AGO
