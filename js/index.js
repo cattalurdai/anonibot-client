@@ -20,9 +20,9 @@
   });
 })();
 
-const API = "https://anonibot-api.onrender.com";
+const API = "http://ec2-18-229-125-4.sa-east-1.compute.amazonaws.com:9999";
 
-// const API = "http://localhost:9999";
+//const API = "http://localhost:9999";
 
 async function buildBody() {
   const body = {
@@ -41,7 +41,7 @@ const previewField = document.getElementById("imagePreview");
 async function getPreview() {
   if (!textValidation(document.getElementById("textArea").value)) {
     return;
-  } 
+  }
 
   showSpinner();
 
