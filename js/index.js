@@ -20,7 +20,7 @@
   });
 })();
 
-const API = "http://ec2-18-229-125-4.sa-east-1.compute.amazonaws.com:9999";
+const API = "https://api.anonibot.com:9999";
 
 //const API = "http://localhost:9999";
 
