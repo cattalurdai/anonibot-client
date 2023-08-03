@@ -1,0 +1,69 @@
+$theme-colors: (
+    "primary": #905ed9,
+    "info": #0b87d9,
+    "success": #7cd852,
+    "danger": #d83929
+);
+
+
+
+$navbar-dark-color: #e2e2e2;
+$form-valid-color: #7cd852;
+$form-valid-border-color: #7cd852;
+$form-feedback-icon-valid-color: #7cd852;
+$form-invalid-color: #d83929;
+$form-invalid-border-color: #d83929;
+$form-feedback-icon-invalid-color: #d83929;
+
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1600px
+);
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+
+$spacer: 1rem;
+$spacers: (
+    0: 0,
+    1: $spacer * 0.25,
+    2: $spacer * 0.5,
+    3: $spacer,
+    4: $spacer * 1.5,
+    mid: $spacer * 2.3,
+    5: $spacer * 3,
+    6: $spacer * 6,
+    7: $spacer * 9
+);
+
+// Create your own map
+$custom-colors: (
+    "gray-900": #090809,
+    "gray-800": #212021,
+    "gray-700": #5f5e60,
+
+    "gray-300": #bababa,
+    "gray-200": #cdcdcd,
+    "gray-100": #e2e2e2,
+
+    "primary-dark": #240f48,
+    "primary-light": #cbafec,
+
+    "info-dark": #044f83
+);
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+@mixin m-4-5 {
+    margin: 4.5rem;
+}

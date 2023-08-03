@@ -1,367 +1,490 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
-    <link rel="stylesheet" href="background.css" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="spinner.css" />
-    <title>Anonibot</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
-  </head>
+<html lang="en">
 
-  <body>
-    <main>
-      <div id="spinner-container">
-        <img id="spinner" src="img/spinner.svg" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anonibot</title>
+  <link href="/css/custom.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+
+<body class="bg-gray-900">
+  <nav class="navbar bg-gray-800 navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">
+      </a>
+
+      <span class="navbar-text brand">
+        <img class="pe-2" width="55" src="/assets//img/logo.png" alt="" />ANONIBOT</span>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-2">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+        </ul>
       </div>
-      <div class="container-fluid px-0 px-md-3 px-lg-5">
-        <nav
-          class="navbar navbar-expand-lg fixed-top py-lg-3 h5 navbar-dark shadow-lg"
-          role="navigation"
-        >
-          <div class="container-fluid">
-            <a class="navbar-brand brand pt-lg-2 mx-lg-5" href="#">
-              <img src="/img/logo.png" style="width: 30px" alt="" />
-            </a>
-            <span class="text-center brand py-auto">ANONIBOT</span>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarMenu"
-              aria-controls="navbarMenu"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarMenu">
-              <div class="navbar-nav ms-lg-4 gap-lg-3 justify-content-between">
-                <a class="nav-link" aria-current="page" href="#first"
-                  >Envía un secreto</a
-                >
-                <a class="nav-link" href="#second">Acerca de</a>
-                <a class="nav-link" href="#third">Reglas</a>
-                <a class="nav-link" href="#fourth">Leer secretos</a>
-              </div>
-            </div>
+    </div>
+  </nav>
+  <div class="firstSection">
+    <div class="row mt-4 my-xxl-7 text-gray-100">
+      <div class="rounded-2 bg-gray-800 mx-auto col-10 col-md-9 col-lg-9 col-xxl-8 p-0 py-4 p-md-1 py-lg-3 px-md-5 py-xxl-6 ">
+        <h1 class="text-center mb-4 mb-xxl-5">Envía tu secreto</h1>
+        <form class="needs-validation row mx-4 mx-md-5 gap-mid" action="#" novalidate>
+          <div class="col-12 p-0">
+            <textarea id="textArea" class="form-control bg-gray-700 d-block textarea" rows="3" required></textarea>
           </div>
-        </nav>
-      </div>
-
-      <section id="first" class="background container-fluid pt-3">
-        <div class="row text-center pt-5 pb-2 mt-lg-3 mb-lg-2">
-          <h1 id="brand-heading" class="brand">ANONIBOT</h1>
-          <h2 id="subtitle">Un lugar donde puedes ser tú</h2>
-        </div>
-
-        <div class="row">
-          <form
-            class="col-11 col-lg-8 mx-auto needs-validation mt-1 mb-4 py-3 px-3 mb-lg-5 rounded-2 platform text-light shadow-lg"
-            action="#"
-            novalidate
-          >
-            <div class="row">
-              <h2 class="text-center">Comparte tus secretos anónimamente</h2>
-            </div>
-            <div class="row pb-4 ">
-              <div class="col-12 ms-lg-auto col-lg-10 mx-lg-auto pt-1 ps-lg-5">
-                <div class="row">
-                  <div class="col-11 mx-auto">
-                    <div class="form-floating">
-                      <textarea
-                        class="form-control"
-                        placeholder="Leave a comment here"
-                        id="textArea"
-                        required
-                      ></textarea>
-                      <label for="textArea"
-                        >Escribe aquí tu mensaje <br />
-                        <h5 id="dotsContainer"></h5
-                      ></label>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="row text-center mt-2 px-5 d-lg-inline-flex justify-content-center"
-                >
-                  <h4 class="my-2 my-lg-4">Selecciona un fondo</h4>
-                  <div class="col-4 p-1 px-lg-3 col-lg-2">
-                    <label>
-                      <input
-                        type="radio"
-                        name="themeSelection"
-                        value="theme1"
-                        checked
-                      />
-                      <img
-                        class="img-fluid rounded-1"
-                        src="/img/creationBgs/theme1.png"
-                        alt="Tema 1"
-                      />
-                    </label>
-                  </div>
-                  <div class="col-4 p-1 px-lg-3 col-lg-2">
-                    <label>
-                      <input
-                        type="radio"
-                        name="themeSelection"
-                        value="theme2"
-                      />
-                      <img
-                        class="img-fluid rounded-1"
-                        src="/img/bg_black.png "
-                        alt="Tema 2"
-                      />
-                    </label>
-                  </div>
-                  <div class="col-4 p-1 px-lg-3 col-lg-2">
-                    <label>
-                      <input
-                        type="radio"
-                        name="themeSelection"
-                        value="theme3"
-                      />
-                      <img
-                        class="img-fluid rounded-1"
-                        src="/img/bg_black.png"
-                        alt="Tema 3"
-                      />
-                    </label>
-                  </div>
-                  <div class="col-4 p-1 px-lg-3 col-lg-2">
-                    <label>
-                      <input
-                        type="radio"
-                        name="themeSelection"
-                        value="theme4"
-                      />
-                      <img
-                        class="img-fluid rounded-1"
-                        src="/img/bg_black.png "
-                        alt="Tema 4"
-                      />
-                    </label>
-                  </div>
-                  <div class="col-4 p-1 px-lg-3 col-lg-2">
-                    <label>
-                      <input
-                        type="radio"
-                        name="themeSelection"
-                        value="theme5"
-                      />
-                      <img
-                        class="img-fluid rounded-1"
-                        src="/img/bg_black.png"
-                        alt="Tema 5"
-                      />
-                    </label>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-12 mt-lg-5 text-center mx-auto">
-                      <span id="reimainingTimeField"></span>
-                      <div class="btn-group mt-2">
-                        <button
-                          type="submit"
-                          class="btn btn-lg text-nowrap shadow-lg submit"
-                          data-bs-toggle="modal"
-                          data-bs-target="#exampleModal"
-                          id="previewBtn"
-                        >
-                          Confirmar <i class="fa-solid fa-check"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </section>
-
-      <!-- Modal -->
-      <div
-        class="modal fade"
-        id="submitModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered p-2">
-          <div class="modal-content bg-dark text-light pt-2">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">
-                Vista previa
-              </h1>
-              <button
-                type="button"
-                class="btn-close btn-close-white"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-12 p-2">
-                  <img
-                    data-bs-dismiss="modal"
-                    id="imagePreview"
-                    class="img-fluid"
-                    src=""
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                data-bs-dismiss="modal"
-                type="submit"
-                id="submitCreatePost"
-                style="background-color: #6eec56"
-                class="btn btn-lg d-block"
-              >
-                Enviar
-                <i class="fa fa-paper-plane text-dark" aria-hidden="true"></i>
-              </button>
-              <button
-                type="button"
-                class="btn btn-lg btn-outline-light"
-                data-bs-dismiss="modal"
-              >
-                Cancelar
+          <div class="row">
+            <div class="col-10 d-grid ps-0">
+              <button class="btn btn-gray-700 d-block py-md-3 fs-5 selectionBtn" type="button" data-bs-toggle="modal"
+                data-bs-target="#themeModal">
+                Seleccionar tema
               </button>
             </div>
+            <div class="col-1 d-flex mx-auto align-items-center">
+              <img class="selectionStatus" id="themeStatusIcon" src="/assets/img/unknown.png" alt="" srcset="" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-10 d-grid ps-0">
+              <button class="btn btn-gray-700 d-block py-md-3 fs-5 selectionBtn" type="button" data-bs-toggle="modal"
+                data-bs-target="#fontModal">
+                Seleccionar fuente
+              </button>
+            </div>
+            <div class="col-1 d-flex mx-auto align-items-center">
+              <img class="selectionStatus" id="fontStatusIcon" src="/assets/img/unknown.png" alt="" srcset="" />
+            </div>
+          </div>
+          <div class="col-12 d-grid mb-2 p-0">
+
+
+            <button type="submit" class="btn btn-primary d-block py-3 fs-3" id="previewBtn">Confirmar</button>
+
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="modal modal-xxl fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-gray-800 text-gray-100">
+        <div class="modal-header d-flex justify-content-center">
+          <h1 class="modal-title ps-3 fs-4" id="previewModalLabel">Selecciona una fuente</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body px-4 fs-5 fontSelection ps-lg-4">
+          <img id="imagePreview" class="img-fluid" src="" alt="" />
+        </div>
+        <div class="modal-footer">
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-outline-gray-100 d-block py-3 px-4 fs-6"
+              data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-lg btn-primary me-3 px-4" data-bs-dismiss="modal" id="submitCreatePost">Publicar</button>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <section id="second" class="container-fluid background2  py-5">
-        <div class="row text-center pt-5 mb-4">
-          <h1 class="title">¿Qué soy?</h1>
+
+
+  <!-- Theme selection -->
+  <div class="modal modal-lg fade" id="themeModal" tabindex="-1" aria-labelledby="themeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-gray-800 text-gray-100">
+        <div class="modal-header d-flex justify-content-center">
+          <h1 class="modal-title ps-3 fs-4" id="themeModalLabel">Selecciona un tema</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="row pb-5 pt-lg-5">
-          <div
-            class="col-11 col-lg-8 mx-auto platform py-lg-5 mt-lg-5 text-light rounded-2 px-2 pb-3"
-          >
-            <div class="row mt-3 mb-2">
-              <h1 class="brand text-center">ANONIBOT</h1>
-            </div>
-            <div class="row text-center">
-              <div class="col-12 col-md-6 col-lg-4 ms-lg-auto mb-2">
-                <img class="logoImg" src="/img/logo.png" alt="" />
-              </div>
-              <div
-                class="col-10 col-md-6 col-lg-4 col-xl-3 align-middle mx-auto mx-lg-0 my-lg-auto me-lg-auto"
-              >
-                <p>
-                  Anonibot es un proyecto creado por un desarrollador de
-                  software uruguayo. Soy un robot que recibe mensajes anónimos y
-                  los publica de forma automatizada en Instagram.
-                </p>
-                <p>
-                  No recolecto <b>ningún tipo de datos personales</b>, la
-                  conexión es segura y cada usuario/mensaje es totalmente
-                  anónimo.
-                </p>
-              </div>
-            </div>
+        <div class="modal-body themeContainer">
+          <div class="row g-4 p-2 p-xxl-5">
+            <label class="col-6">
+              <input type="radio" class="img-fluid" name="themeSelection" value="theme1" />
+              <img src="/assets/img/themes/bg_black.png" alt="Tema 1" />
+            </label>
+
+
+            <label class="col-6">
+              <input type="radio" class="img-fluid" name="themeSelection" value="theme1" />
+              <img src="/assets/img/themes/bg_black.png" alt="Tema 1" />
+            </label>
+            <label class="col-6">
+              <input type="radio" class="img-fluid" name="themeSelection" value="theme1" />
+              <img src="/assets/img/themes/bg_black.png" alt="Tema 1" />
+            </label>
+
+
+            <label class="col-6">
+              <input type="radio" class="img-fluid" name="themeSelection" value="theme1" />
+              <img src="/assets/img/themes/bg_black.png" alt="Tema 1" />
+            </label>
+            <label class="col-6">
+              <input type="radio" class="img-fluid" name="themeSelection" value="theme1" />
+              <img src="/assets/img/themes/bg_black.png" alt="Tema 1" />
+            </label>
+
+
+            <label class="col-6">
+              <input type="radio" class="img-fluid" name="themeSelection" value="theme1" />
+              <img src="/assets/img/themes/bg_black.png" alt="Tema 1" />
+            </label>
+            <label class="col-6">
+              <input type="radio" class="img-fluid" name="themeSelection" value="theme1" />
+              <img src="/assets/img/themes/bg_black.png" alt="Tema 1" />
+            </label>
+            <label class="col-6">
+              <input type="radio" class="img-fluid" name="themeSelection" value="theme1" />
+              <img src="/assets/img/themes/bg_black.png" alt="Tema 1" />
+            </label>
           </div>
         </div>
-      </section>
-
-      <section id="third" class="background3 container-fluid  py-5">
-        <div class="row text-center pt-5 mb-4">
-          <h1 class="text-dark title">Reglas</h1>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-lg btn-primary me-3" onclick="selectTheme()"
+            data-bs-dismiss="modal">Aceptar</button>
         </div>
-        <div class="row pb-5 text-center pt-lg-5">
-          <div
-            class="col-11 col-lg-8 mx-auto platform text-light px-2 pt-3 pb-5 mt-lg-5"
-          >
-            <div class="row my-3">
-              <h1 class="brand text-center">ANONIBOT</h1>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="modal modal-xxl fade" id="fontModal" tabindex="-1" aria-labelledby="fontModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-gray-800 text-gray-100">
+        <div class="modal-header d-flex justify-content-center">
+          <h1 class="modal-title ps-3 fs-4" id="fontModalLabel">Selecciona una fuente</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body px-4 fs-5 fontSelection ps-lg-4">
+          <label class="pt-2">
+            <input class="mx-2" type="radio" name="fontSelection" value="font1" />
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+          </label>
+          <label class="pt-2">
+            <input class="mx-2" type="radio" name="fontSelection" value="font2" />
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+          </label>
+          <label class="pt-2">
+            <input class="mx-2" type="radio" name="fontSelection" value="font3" />
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+          </label>
+          <label class="pt-2">
+            <input class="mx-2" type="radio" name="fontSelection" value="font4" />
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+          </label>
+          <label class="pt-2">
+            <input class="mx-2" type="radio" name="fontSelection" value="font5" />
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+          </label>
+          <label class="pt-2">
+            <input class="mx-2" type="radio" name="fontSelection" value="font6" />
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+          </label>
+          <label class="pt-2">
+            <input class="mx-2" type="radio" name="fontSelection" value="font7" />
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-lg btn-primary me-3" onclick="selectFont()"
+            data-bs-dismiss="modal">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row mt-5 mt-md-6 text-gray-100">
+    <div class="rounded-2 bg-gray-800  mx-auto  pt-4 pb-3 pb-md-0 px-4 px-md-5 col-12">
+
+      <div class="row">
+        <div class="col-12 col-md-8 row mx-auto px-xxl-4">
+          <div class="row d-md-none">
+            <div class="col-10 ">
+              <h1> Un lugar donde <br> <span class="text-primary">ser tú mismo</span></h1>
             </div>
-            <div class="row">
-              <div class="col-11 text-md-center ms-md-5">
-                <ul style="list-style-type: none">
-                  <li>No se permite el <b>acoso o la intimidación</b></li>
-                  <br />
-                  <li>
-                    Anonibot no se hace responsable del contenido de los
-                    secretos enviados a través del servicio
-                  </li>
-                  <br />
-                  <li>
-                    Anonibot se compromete a mantener la
-                    <b>privacidad de sus usuarios.</b>
-                  </li>
-                  <br />
-                  <li>No se permite el <b>SPAM</b>.</li>
-                  <br /><br />
-                  <li>La <u>libertad de expresión</u> es nuestro lema.</li>
-                </ul>
-              </div>
+            <div class="col-2 d-flex align-items-center pb-2">
+              <img width="70" class="float-end" src="assets/img/logo.png" alt="">
             </div>
           </div>
-        </div>
-        <div class="pb-5"></div>
-        <div class="pb-2"></div>
-      </section>
+          <div class="col-12 col-md-8 p-md-5">
+            <div class="d-none d-md-inline">
+              <h1> Un lugar donde <br> <span class="text-primary">ser tú mismo</span></h1>
 
-      <section id="fourth" class="container-fluid background4 py-5">
-        <div class="row text-center pt-5 mb-4">
-          <h1 class="title">Lee los secretos</h1>
-        </div>
-        <div class="row">
-          <div
-            class="col-11 col-md-8 mx-auto platform text-light text-center rounded-2 px-4 p-lg-5"
-          >
-            <div class="row my-3">
-              <h1 class="brand">ANONIBOT</h1>
-              <p>
-                El servicio está actualmente dirigido a la comunidad de
-              San Carlos. <br />
-                Puedes leer los secretos en Instagram haciendo click en este
-                link:
+            </div>
+            <div class="mt-4 text-gray-200">
+              <h2>Comparte tus secretos con el mundo sin temor a ser juzgado
+              </h2>
+            </div>
+            <div class="mt-4">
+              <p class="tertiaryText ">
+
+                Anonibot es un servicio para compartir mensajes anónimos, estos son subidos en forma de imágen a
+                Instagram y pueden ser personalizados por el usuario
               </p>
-              <a class="ms-2"
-                href="https://www.instagram.com/anonibot_sancarlos/"
-                target="_blank"
-                >Anonibot San Carlos
-                <i class="fa fa-picture-o" aria-hidden="true"></i>
-              </a>
-              <div>
-                <img class="logoImg my-3" src="img/logo2.png" />
-              </div>
-              <p class="text-muted">Anonibot BETA V1.0</p>
             </div>
           </div>
+          <div class="col-4 d-none d-md-flex align-items-center">
+            <img class="img-fluid d-none d-md-inline " src="assets/img/logo.png" alt="">
+          </div>
         </div>
-        <div class="pb-5"></div>
-        <div class="pb-2"></div>
-      </section>
-    </main>
-  </body>
+      </div>
+    </div>
+  </div>
 
-  <!-- JavaScript Bundle with Popper -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://kit.fontawesome.com/2dcde58e81.js"
-    crossorigin="anonymous"
-  ></script>
-  <script src="/js/index.js"></script>
-  <script src="/js/animations.js"></script>
+
+
+
+  <div class="row text-gray-100">
+    <div class="rounded-2 bg-gray-800  mx-auto  pt-4 pb-5 pb-md-6 px-4 px-ml-5 col-12">
+
+      <div class="row">
+        <div class="col-12 col-md-8 row mx-auto px-md-5">
+          <div class="row d-md-none">
+            <div class="col-4 d-flex align-items-center pb-2">
+              <img width="70" class="float-end" src="assets/img/security.png" alt="">
+            </div>
+            <div class="col-8 ">
+              <h1> Un entorno <span class="text-info">seguro</span></h1>
+            </div>
+
+          </div>
+          <div class="col-4 d-none d-md-flex align-items-center ps-5 ">
+            <img class="img-fluid d-none d-md-inline" src="assets/img/security.png" alt="">
+          </div>
+          <div class="col-12 col-md-7 p-xxl-4 p-xxl-5">
+            <div class="d-none d-md-inline">
+              <h1> Un entorno <span class="text-info">seguro</span></h1>
+
+            </div>
+            <div class="mt-4 text-gray-200">
+              <h2>Anonibot no puede saber quién eres, no se guardan datos que identifiquen a sus usuarios
+              </h2>
+            </div>
+            <div class="mt-4">
+              <p class="tertiaryText">
+                Te ofrecemos un entorno para expresarte libremente, sin temor a que tu identidad sea revelada.
+                Medidas rigurosas de seguridad y encriptación aseguran que cada mensaje permanezca anónimo.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="secondSection bg-primary-dark text-gray-100 pt-4 p-md-5 m-0 text-center">
+
+    <div class="row mt-4 mb-4 mt-xxl-7 mb-xxl-7">
+      <div class="col-md-9 mx-auto">
+        <h1 class="createHeading">
+          Crea tu imagen <br>
+          <span class="text-success ">exprésate</span>
+        </h1>
+      </div>
+    </div>
+
+    <!-- MD+ SECTION -->
+    <div class="row text-center pt-xxl-5 d-none d-md-inline">
+      <div class="col-md-10 row mx-auto ">
+        <div class="row">
+          <div class="col-4"><img width="250" src="/assets/img/themesrainbow.png" alt=""></div>
+          <div class="col-4"><img width="170" src="/assets/img/font.png" alt=""></div>
+          <div class="col-4"><img class="img-fluid" width="132" src="/assets/img/instagram.png" alt=""></div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-4 fw-bold text-gray-100">
+            <h2 class="fs-1">Temas</h2>
+          </div>
+          <div class="col-4 fw-bold text-gray-100">
+            <h2 class="fs-1">Fuentes</h2>
+          </div>
+          <div class="col-4 fw-bold text-gray-100">
+            <h2 class="fs-1">Publicaciones</h2>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-4 fw-bold text-gray-100 px-xxl-4 px-xxxl-7">
+            <p class="tertiaryText text-gray-200 fw-bold">
+              Tu secreto se escribe encima de una imágen, puedes seleccionar entre multiples temas, cada uno diseñado
+              para transmitir diferentes emociones y estados de ánimo
+            </p>
+          </div>
+          <div class="col-4 fw-bold text-gray-100 px-xxl-4 px-xxxl-7">
+            <p class="tertiaryText text-gray-200 fw-bold">
+              Dale estilo a tu mensaje con tipografía personalizada, una fuente puede transmitir mucho al lector, y por
+              eso es algo fundamental a la
+              hora de construir tu imágen
+            </p>
+          </div>
+          <div class="col-4 fw-bold text-gray-100 px-xxl-4 px-xxxl-7">
+            <p class="tertiaryText text-gray-200 fw-bold">
+              Instagram es la plataforma donde los mensajes son publicados, estos son enviados al mundo para que
+              cualquier
+              persona los pueda leer e inspirarse con ellos
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SM SECTION -->
+    <div class="d-inline d-md-none">
+      <div class="row px-5 mt-4 pt-2 ">
+        <div>
+          <img width="200" src="assets/img/themesrainbow.png" alt="">
+        </div>
+        <div class="mx-auto fw-bold text-gray-100 mt-4">
+          <h2 class="fs-1">Temas</h2>
+        </div>
+        <div>
+          <p class="fs-4 text-gray-200 mt-2 px-2 fw-normal">
+            Tu secreto se escribe encima de una imágen, puedes seleccionar entre multiples temas para transmitir
+            emociones diferentes
+          </p>
+        </div>
+      </div>
+
+      <div class="row px-5 mt-5 pt-2">
+        <div>
+          <img width="180" src="assets/img/font.png" alt="">
+        </div>
+        <div class="mx-auto fw-normal text-gray-100 mt-4">
+          <h2 class="fs-1">Fuentes</h2>
+        </div>
+        <div>
+          <p class="fs-4 text-gray-200 mt-2 px-2  fw-normal">
+            Dale estilo a tu mensaje, una fuente puede transmitir mucho al lector, y por eso es algo fundamental a la
+            hora de construir tu imágen
+          </p>
+        </div>
+      </div>
+
+      <div class="row px-5 mt-5 pt-2 pb-3">
+        <div>
+          <img width="150" src="assets/img/instagram.png" alt="">
+        </div>
+        <div class="mx-auto fw-normal text-gray-100 mt-4">
+          <h2 class="fs-1">Publicaciones</h2>
+        </div>
+        <div>
+          <p class="fs-4 text-gray-200 mt-2 px-2  fw-normal">
+            Instagram es la plataforma donde los mensajes son publicados, estos son enviados al mundo para que cualquier
+            persona los pueda leer e inspirarse con ellos
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="thirdSection bg-info-dark text-gray-100 p-5 px-xxl-7">
+
+    <div class="row ps-md-2 mt-md-6 ">
+      <h1>
+        Pautas para un <br>
+        <span class="text-primary-light">ambiente positivo </span>
+      </h1>
+    </div>
+    <div class="row mt-md-4 gx-md-mid mt-xxl-6">
+      <div class="col-xxl-5">
+        <div class="row mt-3 mt-md-0 ps-md-2">
+          <p>A la hora de brindar un medio anónimo para compartir ideas, nuestro propósito no es promover la
+            promulgación
+            de
+            odio, más bien todo lo contrario
+          </p>
+          <p>
+            Por eso es que en Anonibot condenamos ciertas actividades destructivas para preservar el ambiente positivo
+            en
+            nuestra comunidad
+          </p>
+          <p class="fw-bold deleteSpan">
+
+            <img src="/assets/img/trash.png" alt="Icon">
+            Puedes solicitar la eliminación de un mensaje, para hacer una solicitud <a class="text-danger" href="#">haz
+              click aquí</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-xxl-5">
+
+        <div class="row mt-4 mt-md-0 px-md-5 ps-xxl-7">
+          <h2>
+            No se permite:
+          </h2>
+
+          <ul>
+            <li>Retratar actos de violencia</li>
+            <li>Realizar actos de odio contra individuos o grupos de personas</li>
+            <li>Difamación</li>
+            <li>Acoso</li>
+            <li>Hacer publicidad o sacar provecho comercial del servicio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  <footer class="footer bg-gray-800 text-gray-300">
+    <div class="container py-4">
+      <div class="row">
+        <p>Anonibot Beta</p>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <p>Idea y realización por @CATTA.DEV</p>
+        </div>
+        <div class="col-md-6 text-md-right">
+          <a href="#">Política de privacidad</a> | <a href="#">Términos del servicio</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="index.js"></script>
+
 </html>
