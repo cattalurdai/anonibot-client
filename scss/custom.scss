@@ -22,8 +22,9 @@ $grid-breakpoints: (
   md: 768px,
   lg: 992px,
   xl: 1200px,
-  xxl: 1400px,
-  xxxl: 1600px
+  2xl: 1400px,
+  3xl: 1600px,
+  4xl: 1800px
 );
 
 @import "../node_modules/bootstrap/scss/functions";
