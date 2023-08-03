@@ -351,3 +351,16 @@ textarea{
   }
   
 }
+
+
+.accordion-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+.accordion-header {
+  border-bottom: 1px solid;
+  border-color: #5f5e60 !important;
+}
+
