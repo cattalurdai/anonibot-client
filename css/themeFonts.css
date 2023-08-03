@@ -1,0 +1,71 @@
+/* Courgette Regular */
+@font-face {
+  font-family: "Courgette";
+  src: url("../assets/fonts/Courgette-Regular.ttf") format("truetype");
+}
+
+/* PixeloidSans */
+@font-face {
+  font-family: "PixeloidSans";
+  src: url("../assets/fonts/PixeloidSans-mLxMm.ttf") format("truetype");
+}
+
+/* VictorMono Regular */
+@font-face {
+  font-family: "VictorMono";
+  src: url("../assets/fonts/VictorMono-Regular.ttf") format("truetype");
+}
+
+/* EduSABeginner Regular */
+@font-face {
+  font-family: "EduSABeginner";
+  src: url("../assets/fonts/EduSABeginner-Regular.ttf") format("truetype");
+}
+
+/* Roboto Regular */
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+/* Oswald Regular */
+@font-face {
+  font-family: "Oswald";
+  src: url("../assets/fonts/Oswald-Regular.ttf") format("truetype");
+}
+
+/* Tektur Regular */
+@font-face {
+  font-family: "Tektur";
+  src: url("../assets/fonts/Tektur-Regular.ttf") format("truetype");
+}
+
+
+
+.font1 {
+  font-family: "Roboto", sans-serif;
+}
+
+.font2 {
+  font-family: "EduSABeginner", sans-serif;
+}
+
+.font3 {
+  font-family: "VictorMono", monospace;
+}
+
+.font4 {
+  font-family: "PixeloidSans", sans-serif;
+}
+
+.font5 {
+  font-family: "Courgette", cursive;
+}
+
+.font6 {
+  font-family: "Oswald", sans-serif;
+}
+
+.font7 {
+  font-family: "Tektur", sans-serif;
+}

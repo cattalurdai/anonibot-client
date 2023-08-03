@@ -76,7 +76,7 @@ function validateSelections() {
 async function buildBody() {
   const body = {
     text: await document.getElementById("textArea").value,
-    background: await document.querySelector(
+    theme: await document.querySelector(
       'input[name="themeSelection"]:checked'
     ).value,
     font: await document.querySelector('input[name="fontSelection"]:checked')
@@ -85,8 +85,8 @@ async function buildBody() {
   return JSON.stringify(body);
 }
 
-const API = "https://api.anonibot.com:9999";
-// const API = "http://localhost:9999";
+//const API = "https://api.anonibot.com:9999";
+ const API = "http://localhost:9999";
 
 function getPreviewModal() {
   if (!previewModal) {
@@ -157,7 +157,7 @@ async function createPost() {
       throw new Error(`Request failed with status: ${response.status}`);
     }
 
-    console.log(response.body)
+    console.log(response.body);
   } catch (error) {
     console.error(error);
   }
