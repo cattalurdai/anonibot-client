@@ -105,7 +105,7 @@
         <div class="modal-body px-4 fs-5 ps-lg-4">
           <img id="imagePreview" class="img-fluid fullscreen-image" src="" alt="" />
           <div class="row text-center mt-2 d-md-none">
-            <span class="fs-6 px-1 fw-normal ">Mantén presionado para ampliar</span>
+            <span class="fs-6 px-1 fw-normal">Mantén presionado para ampliar</span>
           </div>
           <div class="row text-center">
             <span class="disclaimer fw-light pt-4">Al publicar, aceptas nuestros <a data-bs-toggle="modal"
@@ -189,13 +189,16 @@
   <div class="modal modal-2xl fade" id="fontModal" tabindex="-1" aria-labelledby="fontModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content bg-gray-800 text-gray-100">
-        <div class="modal-header d-flex justify-content-center">
-          <h1 class="modal-title ps-3 fs-4" id="fontModalLabel">Personaliza el texto</h1>
+        <div class="modal-header d-flex justify-content-center border-bottom border-gray-700">
+          <h1 class="modal-title fs-4 " id="fontModalLabel">Personaliza el texto</h1>
+
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body px-4 fs-5 ps-lg-4">
-          <h4 class="pb-1">Selecciona una fuente</h4>
+
+          <h4 class="pb-2 fontsHeading">Selecciona una fuente</h4>
           <div class="fontSelection">
+
 
             <label class="pt-2">
               <input class="mx-2" type="radio" name="fontSelection" value="Roboto-Regular" />
@@ -228,21 +231,28 @@
 
           </div>
           <hr>
-          <h4 class="pb-1">Selecciona tamaño de letra</h4>
-          <label class="pt-2">
-            <input class="mx-2 " type="radio" name="sizeSelection" value="sm" checked />
-            <span class="fs-6">Pequeño (240 carácteres max.)</span>
-          </label>
-          <label class="pt-2">
-            <input class="mx-2" type="radio" name="sizeSelection" value="lg" />
-            <span class="fs-6">Grande (120 carácteres max.)</span>
-          </label>
-
-
+          <h4 class="pb-1 sizeHeading">Selecciona tamaño de letra</h4>
+          <div class="sizeSelection">
+            <label class="pt-2">
+              <input class="mx-2 " type="radio" name="sizeSelection" value="sm" checked />
+              <span class="fs-6">Pequeño (240 carácteres max.)</span>
+            </label>
+            <label class="pt-2">
+              <input class="mx-2" type="radio" name="sizeSelection" value="md" />
+              <span class="fs-6">Mediano (120 carácteres max.)</span>
+            </label>
+            <label class="pt-2">
+              <input class="mx-2" type="radio" name="sizeSelection" value="lg" />
+              <span class="fs-6">Grande (60 carácteres max.)</span>
+            </label>
+          </div>
+          <div class="div ms-1 mt-4">
+            <span class="fs-6  fw-light">Podrás pre-visualizar el texto y el tema a continuación</span>
+          </div>
         </div>
+
         <div class="modal-footer">
 
-          <p class="fs-6 px-1 fw-light">Podrás pre-visualizar el texto y el tema a continuación</p>
           <button type="button" class="btn btn-lg btn-primary" onclick="selectFont()"
             data-bs-dismiss="modal">Aceptar</button>
         </div>

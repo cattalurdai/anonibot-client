@@ -286,9 +286,7 @@ textarea{
     font-size: 1.5rem !important;
   }
 
-  .fontSelection input {
-    transform: scale(1.5);
-  }
+
 
   .textarea {
     font-size: 2rem !important;
@@ -301,13 +299,20 @@ textarea{
 /* Font selection */
 
 .fontSelection {
-  font-size: 1.5rem !important;
+  font-size: 1.2rem !important;
   height: 200px !important;
   overflow-y: scroll;
 }
+.fontsHeading,.sizeHeading{
+  font-size: 1.5rem !important;
+}
 
 .fontSelection input {
-  transform: scale(2);
+  transform: scale(1.5);
+}
+
+.sizeSelection input {
+  transform: scale(1.5) ;
 }
 
 
@@ -362,10 +367,14 @@ textarea{
     font-size: 1.1rem !important;
     line-height: normal;
   }
+
   .fontSelection input {
     transform: scale(1);
   }
 
+  .sizeSelection input {
+    transform: scale(1);
+  }
 
 
 
