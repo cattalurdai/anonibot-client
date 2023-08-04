@@ -178,7 +178,7 @@ async function createPost() {
     if (response.status === 429) {
       // Handle 429 status error
       hideSpinner();
-      showErrorAlert("Has enviado un mensaje hace poco, por favor intenta mas tarde");
+      showErrorAlert("Has enviado un mensaje hace poco, intenta de nuevo en un rato");
       return
     } 
 
