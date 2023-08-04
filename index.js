@@ -346,7 +346,7 @@ role="alert"><div class="row">
   // Automatically hide the alert after a few seconds (optional)
   setTimeout(() => {
     alertContainer.innerHTML = "";
-  }, 5000);
+  }, 8000);
 }
 
 
