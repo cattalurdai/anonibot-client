@@ -111,6 +111,7 @@ function getModal() {
 async function getPreview() {
   // Send request
 
+  showSpinner();
   try {
     const response = await fetch(API + "/getPreview", {
       method: "POST",
@@ -131,6 +132,7 @@ async function getPreview() {
     // Update preview
     previewField.src = `data:image/png;base64,${base64String}`;
 
+    hideSpinner();
     getModal().show();
   } catch (error) {
     console.error(error);
@@ -143,8 +145,8 @@ submitCreatePost.addEventListener("click", () => {
 });
 
 async function createPost() {
-  // Check last post time
 
+  showSpinner();
   // Send request
   try {
     const response = await fetch(API + "/createPost", {
@@ -159,7 +161,8 @@ async function createPost() {
     if (!response.ok) {
       throw new Error(`Request failed with status: ${response.status}`);
     }
-
+hideSpinner()
+    showSuccessAlert()
     console.log(response.body);
   } catch (error) {
     console.error(error);
@@ -168,28 +171,28 @@ async function createPost() {
 
 // CHAR COUNTER
 // Get the textarea element
-const textArea = document.getElementById('textArea');
+const textArea = document.getElementById("textArea");
 
 // Get the counter element
-const charCounter = document.getElementById('charCounter');
+const charCounter = document.getElementById("charCounter");
 
 // Get the radio buttons
-const sizeSelectionRadios = document.getElementsByName('sizeSelection');
+const sizeSelectionRadios = document.getElementsByName("sizeSelection");
 
 // Function to update the character counter
 function updateCharCounter() {
   const remainingCharacters = textArea.maxLength - textArea.value.length;
   charCounter.textContent = remainingCharacters;
-  charCounter.style.color = remainingCharacters < 0 ? 'red' : '#333'; // Set color based on remaining characters
+  charCounter.style.color = remainingCharacters < 0 ? "red" : "#333"; // Set color based on remaining characters
 }
 
 // Update the character counter and display negative remaining characters
-textArea.addEventListener('input', () => {
+textArea.addEventListener("input", () => {
   updateCharCounter();
 });
 
 // Handle paste event
-textArea.addEventListener('paste', (event) => {
+textArea.addEventListener("paste", (event) => {
   // Allow the paste event to complete first
   setTimeout(() => {
     updateCharCounter();
@@ -204,10 +207,10 @@ textArea.addEventListener('paste', (event) => {
 
 // Update the maximum character limit based on radio button selection
 sizeSelectionRadios.forEach((radio) => {
-  radio.addEventListener('change', () => {
-    if (radio.value === 'sm') {
+  radio.addEventListener("change", () => {
+    if (radio.value === "sm") {
       textArea.maxLength = 240;
-    } else if (radio.value === 'lg') {
+    } else if (radio.value === "lg") {
       textArea.maxLength = 120;
     }
 
@@ -216,11 +219,10 @@ sizeSelectionRadios.forEach((radio) => {
   });
 });
 
-
 // FULLSCREEN IMAGE
 
 // Get the image element
-const imagePreview = document.getElementById('imagePreview');
+const imagePreview = document.getElementById("imagePreview");
 
 // Variable to store the timer for long press
 let longPressTimer;
@@ -229,7 +231,9 @@ let longPressTimer;
 function toggleFullScreen() {
   if (!document.fullscreenElement) {
     imagePreview.requestFullscreen().catch((err) => {
-      console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+      console.log(
+        `Error attempting to enable full-screen mode: ${err.message} (${err.name})`
+      );
     });
   } else {
     document.exitFullscreen();
@@ -242,7 +246,7 @@ function handleLongPress(event) {
   longPressTimer = setTimeout(() => {
     toggleFullScreen();
     // After entering fullscreen, remove the "click" event listener
-    imagePreview.removeEventListener('click', handleExitFullscreen);
+    imagePreview.removeEventListener("click", handleExitFullscreen);
   }, 500); // Adjust the long press duration (in milliseconds) as needed
 }
 
@@ -259,17 +263,63 @@ function handleExitFullscreen() {
 }
 
 // Listen for touch events
-imagePreview.addEventListener('touchstart', handleLongPress);
-imagePreview.addEventListener('touchend', handleRelease);
+imagePreview.addEventListener("touchstart", handleLongPress);
+imagePreview.addEventListener("touchend", handleRelease);
 
 // Listen for mouse events
-imagePreview.addEventListener('mousedown', handleLongPress);
-imagePreview.addEventListener('mouseup', handleRelease);
+imagePreview.addEventListener("mousedown", handleLongPress);
+imagePreview.addEventListener("mouseup", handleRelease);
 
 // Listen for click event to exit fullscreen mode (with a delay)
-imagePreview.addEventListener('click', () => {
+imagePreview.addEventListener("click", () => {
   setTimeout(() => {
-    imagePreview.addEventListener('click', handleExitFullscreen);
+    imagePreview.addEventListener("click", handleExitFullscreen);
   }, 300); // Adjust the delay (in milliseconds) as needed
 });
 
+// SUCCESS ALERT
+// Function to show the success alert
+function showSuccessAlert() {
+  // Show the success alert
+  const alertContainer = document.getElementById("alertContainer");
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML = `  <div class="col-12 p-0 col-lg-5 alert alert-success align-items-center  mx-lg-auto text-gray-900 fade show" id="successAlert"
+role="alert"><div class="row">
+<div class="col-2 ms-auto">
+<img width="50" src="/assets/img/success.png" alt=""></div>
+<div class="col-10 d-flex align-items-center me-auto">
+<span class="ps-2">Secreto publicado exitosamente </span></div></div>
+</div>`;
+
+alertContainer.append(wrapper)
+  // Automatically hide the alert after a few seconds (optional)
+  setTimeout(() => {
+    alertContainer.innerHTML = ""
+  }, 5000);
+}
+
+// Function to hide the success alert
+function hideSuccessAlert() {
+  // Hide the success alert
+  const successAlert = document.getElementById("successAlert");
+  successAlert.classList.remove("show");
+}
+
+// LOADING SPINNER
+
+const spinner = document.getElementById("spinner");
+const spinnerContainer = document.getElementById("spinner-container");
+
+function showSpinner() {
+  document.body.classList.add("loading");
+  spinner.style.display = "block";
+  spinnerContainer.style.display = "flex";
+  console.log("spinner on");
+}
+
+function hideSpinner() {
+  spinner.style.display = "none";
+  spinnerContainer.style.display = "none";
+  document.body.classList.remove("loading");
+  console.log("spinner off");
+}
