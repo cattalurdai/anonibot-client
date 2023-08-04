@@ -440,3 +440,8 @@ textarea{
 body.loading {
   overflow: hidden; /* Prevent scrolling when the overlay is active */
 }
+
+/* Disclaimer */
+.disclaimer{
+  font-size: 14px;
+}

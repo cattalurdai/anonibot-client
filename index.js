@@ -9,13 +9,13 @@
     form.addEventListener(
       "submit",
       (event) => {
-        validateSelections();
+        applyValidationStyles();
         if (!form.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
         } else {
           event.preventDefault();
-          getPreview();
+          validateSelection() ? getPreview() : null;
         }
         form.classList.add("was-validated");
       },
@@ -50,7 +50,7 @@ function selectFont() {
   }
 }
 
-function validateSelections() {
+function applyValidationStyles() {
   const themeSelected = document.querySelector(
     'input[name="themeSelection"]:checked'
   );
@@ -68,8 +68,18 @@ function validateSelections() {
   } else {
     fontStatusIcon.classList.remove("invalidStatus");
   }
+}
 
-  return themeSelected && fontSelected;
+
+function validateSelection(){
+  const themeSelected = document.querySelector(
+    'input[name="themeSelection"]:checked'
+  );
+  const fontSelected = document.querySelector(
+    'input[name="fontSelection"]:checked'
+  );
+
+  return themeSelected && fontSelected
 }
 
 //BUILD BODY
@@ -145,7 +155,6 @@ submitCreatePost.addEventListener("click", () => {
 });
 
 async function createPost() {
-
   showSpinner();
   // Send request
   try {
@@ -161,8 +170,8 @@ async function createPost() {
     if (!response.ok) {
       throw new Error(`Request failed with status: ${response.status}`);
     }
-hideSpinner()
-    showSuccessAlert()
+    hideSpinner();
+    showSuccessAlert();
     console.log(response.body);
   } catch (error) {
     console.error(error);
@@ -291,10 +300,10 @@ role="alert"><div class="row">
 <span class="ps-2">Secreto publicado exitosamente </span></div></div>
 </div>`;
 
-alertContainer.append(wrapper)
+  alertContainer.append(wrapper);
   // Automatically hide the alert after a few seconds (optional)
   setTimeout(() => {
-    alertContainer.innerHTML = ""
+    alertContainer.innerHTML = "";
   }, 5000);
 }
 
