@@ -152,7 +152,7 @@ input[type="radio"][name="themeSelection"]:checked + img {
   outline: 3px solid #8753d6;
 }
 
-input[type="radio"][name="fontSelection"] {
+input[type="radio"] {
   accent-color: #905ed9;
 }
 
@@ -215,6 +215,11 @@ h2 {
 textarea{
   color: #090809;
 }
+
+.form-control{
+  background-size: 0px !important; /* Adjust the size as needed */
+}
+
 
 /* Media query for phones */
 @media (max-width: 1399px) {
@@ -284,12 +289,16 @@ textarea{
     font-size: 2rem !important;
     line-height: 2rem;
   }
+
+
 }
 
 /* Font selection */
 
 .fontSelection {
   font-size: 1.5rem !important;
+  height: 200px !important;
+  overflow-y: scroll;
 }
 
 .fontSelection input {
@@ -336,6 +345,8 @@ textarea{
 
   .fontSelection {
     font-size: 1.05rem !important;
+    max-height: 10% !important;
+    overflow-y: scroll;
   }
 
   .thirdSection h1 {
@@ -349,7 +360,10 @@ textarea{
   .fontSelection input {
     transform: scale(1);
   }
-  
+
+
+
+
 }
 
 
@@ -364,3 +378,30 @@ textarea{
   border-color: #5f5e60 !important;
 }
 
+
+.corner-counter {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  padding: 0px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #333;
+}
+
+/* Style to make the image fill the whole screen in fullscreen mode */
+.fullscreen-image:-webkit-full-screen {
+  object-fit: contain;
+}
+
+.fullscreen-image:-moz-full-screen {
+  object-fit: contain;
+}
+
+.fullscreen-image:-ms-fullscreen {
+  object-fit: contain;
+}
+
+.fullscreen-image:fullscreen {
+  object-fit: contain;
+}

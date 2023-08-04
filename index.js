@@ -14,6 +14,7 @@
           event.preventDefault();
           event.stopPropagation();
         } else {
+          event.preventDefault();
           getPreview();
         }
         form.classList.add("was-validated");
@@ -76,17 +77,19 @@ function validateSelections() {
 async function buildBody() {
   const body = {
     text: await document.getElementById("textArea").value,
-    theme: await document.querySelector(
-      'input[name="themeSelection"]:checked'
-    ).value,
+    theme: await document.querySelector('input[name="themeSelection"]:checked')
+      .value,
+    size: await document.querySelector('input[name="sizeSelection"]:checked')
+      .value,
     font: await document.querySelector('input[name="fontSelection"]:checked')
       .value,
   };
+  console.log(body);
   return JSON.stringify(body);
 }
 
 const API = "https://api.anonibot.com:9999";
-// const API = "http://localhost:9999";
+//const API = "http://localhost:9999";
 
 function getPreviewModal() {
   if (!previewModal) {
@@ -116,7 +119,7 @@ async function getPreview() {
       },
       body: await buildBody(),
     });
-
+    console.log(await buildBody());
     // Error handling
     if (!response.ok) {
       const errorMessage = await response.text();
@@ -162,3 +165,101 @@ async function createPost() {
     console.error(error);
   }
 }
+
+// CHAR COUNTER
+// Get the textarea element
+const textArea = document.getElementById('textArea');
+
+// Get the counter element
+const charCounter = document.getElementById('charCounter');
+
+// Get the radio buttons
+const sizeSelectionRadios = document.getElementsByName('sizeSelection');
+
+// Function to update the character counter
+function updateCharCounter() {
+  const remainingCharacters = textArea.maxLength - textArea.value.length;
+  charCounter.textContent = remainingCharacters;
+  charCounter.style.color = remainingCharacters < 0 ? 'red' : '#333'; // Set color based on remaining characters
+}
+
+// Update the character counter and display negative remaining characters
+textArea.addEventListener('input', () => {
+  updateCharCounter();
+});
+
+// Handle paste event
+textArea.addEventListener('paste', (event) => {
+  // Allow the paste event to complete first
+  setTimeout(() => {
+    updateCharCounter();
+
+    // Trim the text to the character limit if necessary
+    if (textArea.value.length > textArea.maxLength) {
+      textArea.value = textArea.value.slice(0, textArea.maxLength);
+      updateCharCounter();
+    }
+  }, 10);
+});
+
+// Update the maximum character limit based on radio button selection
+sizeSelectionRadios.forEach((radio) => {
+  radio.addEventListener('change', () => {
+    if (radio.value === 'sm') {
+      textArea.maxLength = 240;
+    } else if (radio.value === 'lg') {
+      textArea.maxLength = 120;
+    }
+
+    // Update the counter to reflect the new limit
+    updateCharCounter();
+  });
+});
+
+
+// FULLSCREEN IMAGE
+
+// Get the image element
+const imagePreview = document.getElementById('imagePreview');
+
+// Variable to store the timer for long press
+let longPressTimer;
+
+// Function to toggle fullscreen mode
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    imagePreview.requestFullscreen().catch((err) => {
+      console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+    });
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+// Function to handle long press
+function handleLongPress() {
+  longPressTimer = setTimeout(() => {
+    toggleFullScreen();
+  }, 500); // Adjust the long press duration (in milliseconds) as needed
+}
+
+// Function to handle release of the press
+function handleRelease() {
+  clearTimeout(longPressTimer);
+}
+
+// Listen for touch events
+imagePreview.addEventListener('touchstart', handleLongPress);
+imagePreview.addEventListener('touchend', handleRelease);
+
+// Listen for mouse events
+imagePreview.addEventListener('mousedown', handleLongPress);
+imagePreview.addEventListener('mouseup', handleRelease);
+
+
+// Listen for click event to exit fullscreen mode
+imagePreview.addEventListener('click', () => {
+  setTimeout(() => {
+    imagePreview.addEventListener('click', handleExitFullscreen);
+  }, 300); // Adjust the delay (in milliseconds) as needed
+});
