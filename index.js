@@ -237,15 +237,25 @@ function toggleFullScreen() {
 }
 
 // Function to handle long press
-function handleLongPress() {
+function handleLongPress(event) {
+  event.preventDefault(); // Prevent the context menu from opening
   longPressTimer = setTimeout(() => {
     toggleFullScreen();
+    // After entering fullscreen, remove the "click" event listener
+    imagePreview.removeEventListener('click', handleExitFullscreen);
   }, 500); // Adjust the long press duration (in milliseconds) as needed
 }
 
 // Function to handle release of the press
 function handleRelease() {
   clearTimeout(longPressTimer);
+}
+
+// Function to handle exit fullscreen on click
+function handleExitFullscreen() {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  }
 }
 
 // Listen for touch events
@@ -256,8 +266,7 @@ imagePreview.addEventListener('touchend', handleRelease);
 imagePreview.addEventListener('mousedown', handleLongPress);
 imagePreview.addEventListener('mouseup', handleRelease);
 
-
-// Listen for click event to exit fullscreen mode
+// Listen for click event to exit fullscreen mode (with a delay)
 imagePreview.addEventListener('click', () => {
   setTimeout(() => {
     imagePreview.addEventListener('click', handleExitFullscreen);
