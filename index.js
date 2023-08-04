@@ -70,8 +70,7 @@ function applyValidationStyles() {
   }
 }
 
-
-function validateSelection(){
+function validateSelection() {
   const themeSelected = document.querySelector(
     'input[name="themeSelection"]:checked'
   );
@@ -79,7 +78,7 @@ function validateSelection(){
     'input[name="fontSelection"]:checked'
   );
 
-  return themeSelected && fontSelected
+  return themeSelected && fontSelected;
 }
 
 //BUILD BODY
@@ -117,10 +116,7 @@ function getModal() {
   }
   return previewModal;
 }
-
 async function getPreview() {
-  // Send request
-
   showSpinner();
   try {
     const response = await fetch(API + "/getPreview", {
@@ -130,13 +126,20 @@ async function getPreview() {
       },
       body: await buildBody(),
     });
-    console.log(await buildBody());
-    // Error handling
+
     if (!response.ok) {
-      const errorMessage = await response.text();
-      console.error(errorMessage);
+      // Check specific error status codes and display custom error messages
+      if (response.status === 404) {
+        showErrorAlert("No encontrado.");
+      } else if (response.status === 500) {
+        showErrorAlert("Error interno del servidor, intenta de nuevo");
+      } else {
+        const errorMessage = await response.text();
+        showErrorAlert(`Solicitud falló con status: ${response.status}. ${errorMessage}`);
+      }
       return;
     }
+
     const base64String = await response.text();
 
     // Update preview
@@ -145,9 +148,13 @@ async function getPreview() {
     hideSpinner();
     getModal().show();
   } catch (error) {
+    // Handle network errors or other unexpected exceptions
+    hideSpinner();
+    showErrorAlert("Ocurrio un error inesperado, intenta de nuevo.");
     console.error(error);
   }
 }
+
 
 const submitCreatePost = document.getElementById("submitCreatePost");
 submitCreatePost.addEventListener("click", () => {
@@ -166,10 +173,23 @@ async function createPost() {
       body: await buildBody(),
     });
 
-    // Error handling
-    if (!response.ok) {
-      throw new Error(`Request failed with status: ${response.status}`);
-    }
+
+
+    if (response.status === 429) {
+      // Handle 429 status error
+      hideSpinner();
+      showErrorAlert("Has enviado un mensaje hace poco, por favor intenta mas tarde");
+      return
+    } 
+
+        // Error handling
+        if (!response.ok) {
+          showErrorAlert("Error de servidor, intenta otra vez");
+          hideSpinner();
+          throw new Error(`Request failed with status: ${response.status}`);
+          
+        }
+    
     hideSpinner();
     showSuccessAlert();
     console.log(response.body);
@@ -308,13 +328,27 @@ role="alert"><div class="row">
     alertContainer.innerHTML = "";
   }, 5000);
 }
+function showErrorAlert(text) {
+  // Show the success alert
+  const alertContainer = document.getElementById("alertContainer");
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML = `  <div class="col-12 p-0 col-lg-5 alert alert-danger align-items-center  mx-lg-auto text-gray-900 fade show" id="successAlert"
+role="alert"><div class="row">
+<div class="col-2 ms-auto">
 
-// Function to hide the success alert
-function hideSuccessAlert() {
-  // Hide the success alert
-  const successAlert = document.getElementById("successAlert");
-  successAlert.classList.remove("show");
+<img width="50" src="/assets/img/error.png" alt=""></div>
+
+<div class="col-10 d-flex align-items-center me-auto">
+<span class="ps-2">${text} </span></div></div>
+</div>`;
+
+  alertContainer.append(wrapper);
+  // Automatically hide the alert after a few seconds (optional)
+  setTimeout(() => {
+    alertContainer.innerHTML = "";
+  }, 5000);
 }
+
 
 // LOADING SPINNER
 
