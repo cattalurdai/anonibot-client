@@ -43,6 +43,11 @@ body {
   overflow-x: hidden;
 }
 
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed;
+}
+
 .firstSection {
   min-height: 45vh;
 }
@@ -405,3 +410,5 @@ textarea{
 .fullscreen-image:fullscreen {
   object-fit: contain;
 }
+
+

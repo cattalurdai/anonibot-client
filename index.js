@@ -272,3 +272,4 @@ imagePreview.addEventListener('click', () => {
     imagePreview.addEventListener('click', handleExitFullscreen);
   }, 300); // Adjust the delay (in milliseconds) as needed
 });
+
