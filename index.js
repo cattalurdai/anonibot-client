@@ -97,8 +97,8 @@ async function buildBody() {
   return JSON.stringify(body);
 }
 
- const API = "https://api.anonibot.com:9999";
-// const API = "http://localhost:9999";
+const API = "https://api.anonibot.com:9999";
+//const API = "http://localhost:9999";
 
 function getPreviewModal() {
   if (!previewModal) {
@@ -135,7 +135,9 @@ async function getPreview() {
         showErrorAlert("Error interno del servidor, intenta de nuevo");
       } else {
         const errorMessage = await response.text();
-        showErrorAlert(`Solicitud falló con status: ${response.status}. ${errorMessage}`);
+        showErrorAlert(
+          `Solicitud falló con status: ${response.status}. ${errorMessage}`
+        );
       }
       return;
     }
@@ -155,7 +157,6 @@ async function getPreview() {
   }
 }
 
-
 const submitCreatePost = document.getElementById("submitCreatePost");
 submitCreatePost.addEventListener("click", () => {
   createPost();
@@ -173,23 +174,22 @@ async function createPost() {
       body: await buildBody(),
     });
 
-
-
     if (response.status === 429) {
       // Handle 429 status error
       hideSpinner();
-      showErrorAlert("Has enviado un mensaje hace poco, intenta de nuevo en un rato");
-      return
-    } 
+      showErrorAlert(
+        "Has enviado un mensaje hace poco, intenta de nuevo en un rato"
+      );
+      return;
+    }
 
-        // Error handling
-        if (!response.ok) {
-          showErrorAlert("Error de servidor, intenta otra vez");
-          hideSpinner();
-          throw new Error(`Request failed with status: ${response.status}`);
-          
-        }
-    
+    // Error handling
+    if (!response.ok) {
+      showErrorAlert("Error de servidor, intenta otra vez");
+      hideSpinner();
+      throw new Error(`Request failed with status: ${response.status}`);
+    }
+
     hideSpinner();
     showSuccessAlert();
     console.log(response.body);
@@ -348,7 +348,6 @@ role="alert"><div class="row">
     alertContainer.innerHTML = "";
   }, 8000);
 }
-
 
 // LOADING SPINNER
 
