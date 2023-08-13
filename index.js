@@ -38,6 +38,7 @@ const themeStatusIcon = document.getElementById("themeStatusIcon");
 function selectTheme() {
   if (document.querySelector('input[name="themeSelection"]:checked')) {
     themeStatusIcon.src = "./assets/img/success.webp";
+    themeStatusIcon.src = "./assets/img/success.webp";
     themeStatusIcon.classList.remove("invalidStatus");
   }
 }
@@ -45,6 +46,7 @@ function selectTheme() {
 const fontStatusIcon = document.getElementById("fontStatusIcon");
 function selectFont() {
   if (document.querySelector('input[name="fontSelection"]:checked').value) {
+    fontStatusIcon.src = "./assets/img/success.webp";
     fontStatusIcon.src = "./assets/img/success.webp";
     fontStatusIcon.classList.remove("invalidStatus");
   }
@@ -318,6 +320,7 @@ function showSuccessAlert() {
 role="alert"><div class="row">
 <div class="col-2 ms-auto">
 <img width="50" src="/assets/img/success.webp" alt=""></div>
+<img width="50" src="/assets/img/success.webp" alt=""></div>
 <div class="col-10 d-flex align-items-center me-auto">
 <span class="ps-2">Secreto publicado exitosamente </span></div></div>
 </div>`;
@@ -336,6 +339,7 @@ function showErrorAlert(text) {
 role="alert"><div class="row">
 <div class="col-2 ms-auto">
 
+<img width="50" src="/assets/img/error.webp" alt=""></div>
 <img width="50" src="/assets/img/error.webp" alt=""></div>
 
 <div class="col-10 d-flex align-items-center me-auto">
