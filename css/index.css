@@ -318,6 +318,7 @@ textarea{
 
 .invalidStatus {
   border: 2px solid #d83929;
+  border-radius: 100%;
 }
 
 /* Media query for phones */
