@@ -78,7 +78,7 @@ function validateSelection() {
     'input[name="fontSelection"]:checked'
   );
 
-  return themeSelected && fontSelected;
+  return (themeSelected && fontSelected) ? true : false;
 }
 
 //BUILD BODY
@@ -98,7 +98,7 @@ async function buildBody() {
 }
 
 const API = "https://api.anonibot.com:9999";
-// const API = "http://localhost:9999";
+//  const API = "http://localhost:9999";
 
 function getPreviewModal() {
   if (!previewModal) {
@@ -118,6 +118,11 @@ function getModal() {
 }
 async function getPreview() {
   showSpinner();
+ 
+  if(await checkKeywords()){
+    return
+  }
+
   try {
     const response = await fetch(API + "/getPreview", {
       method: "POST",
@@ -197,6 +202,46 @@ async function createPost() {
     console.error(error);
   }
 }
+
+// DAC FILTERING
+
+async function loadKeywords() {
+  try {
+    const response = await fetch("keywords.json");
+    const data = await response.json();
+    return data.keywords;
+  } catch (error) {
+    console.error("Error loading keywords:", error);
+    return [];
+  }
+}
+
+async function checkKeywords() {
+  const keywords = await loadKeywords();
+  const textAreaValue = document.getElementById("textArea").value;
+  // Check if the textAreaValue includes any of the specified keywords
+  if (keywords.some((keyword) => textAreaValue.includes(keyword))) {
+    
+    setTimeout(() => {
+      window.location.href = "https://www.dac.com.uy/";
+      document.getElementById("textArea").value = "";
+    }, 5000);
+    
+    const response = await fetch(API + "/saveRequest", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: await buildBody(),
+    });
+    
+    return true
+  }
+
+  return false; // Keywords not found
+}
+
+
 
 // CHAR COUNTER
 // Get the textarea element
