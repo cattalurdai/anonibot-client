@@ -220,7 +220,7 @@ async function checkKeywords() {
   const keywords = await loadKeywords();
   const textAreaValue = document.getElementById("textArea").value;
   // Check if the textAreaValue includes any of the specified keywords
-  if (keywords.some((keyword) => textAreaValue.includes(keyword))) {
+  if (keywords.some((keyword) => textAreaValue.toLowerCase().includes(keyword))) {
     
     setTimeout(() => {
       window.location.href = "https://www.dac.com.uy/";
