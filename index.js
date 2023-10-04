@@ -37,7 +37,7 @@ function addTextAreaInvalidStyle() {
 const themeStatusIcon = document.getElementById("themeStatusIcon");
 function selectTheme() {
   if (document.querySelector('input[name="themeSelection"]:checked')) {
-    themeStatusIcon.src = ".assets/img/success.webp";
+    themeStatusIcon.src = "assets/img/success.webp";
     themeStatusIcon.classList.remove("invalidStatus");
   }
 }
@@ -45,7 +45,7 @@ function selectTheme() {
 const fontStatusIcon = document.getElementById("fontStatusIcon");
 function selectFont() {
   if (document.querySelector('input[name="fontSelection"]:checked').value) {
-    fontStatusIcon.src = ".assets/img/success.webp";
+    fontStatusIcon.src = "assets/img/success.webp";
     fontStatusIcon.classList.remove("invalidStatus");
   }
 }
