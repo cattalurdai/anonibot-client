@@ -480,5 +480,5 @@ body.loading {
   position: absolute;
   top: 5px; /* Adjust the top distance as needed */
   right: 5px; /* Adjust the right distance as needed */
-  width: 50px !important; /* Set the width of the badge image as needed */
+  width: 30px !important; /* Set the width of the badge image as needed */
 }
