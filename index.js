@@ -97,8 +97,8 @@ async function buildBody() {
   return JSON.stringify(body);
 }
 
-// const API = "https://api.anonibot.com:9999";
-  const API = "http://localhost:9999";
+ const API = "https://api.anonibot.com:9999";
+//  const API = "http://localhost:9999";
 
 function getPreviewModal() {
   if (!previewModal) {
